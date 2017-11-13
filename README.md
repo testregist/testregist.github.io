@@ -1,1 +1,0 @@
-# testregist.github.io
