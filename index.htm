@@ -2,26 +2,39 @@
 <html xmlns="//www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"><!--PG크로스브라우징필수내용 시작-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--PG크로스브라우징필수내용 시작-->
   <meta http-equiv="Cache-Control" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <meta http-equiv="Pragma" content="no-cache">
   <!--PG크로스브라우징필수내용 끝-->
   <!--해당 CSS는 쇼핑몰 전체 페이지에 영향을 줍니다. 삭제와 수정에 주의해주세요.-->
   <!-- 스마트디자인에서는 JQuery 1.4.4 버전이 내장되어있습니다. 추가로 호출하면 충돌이 생길 수 있습니다. -->
-  <script type="text/javascript" src="./sample3_files/common.js">
-  </script><!-- 해당 JS는 플래시를 사용하기 위한 스크립트입니다. -->
+  <script type="text/javascript" src="./sample_ex_files/common.js"></script>
+  <!-- 해당 JS는 플래시를 사용하기 위한 스크립트입니다. -->
   <style type="text/css">
-    #JD-Right .panel{width:180px}
-    </style>
+  #JD-Right .panel{width:0}
+  </style>
 <link rel="canonical" href="">
 <link rel="alternate" href="">
+<link rel="stylesheet" href="./sample_ex_files/default_shop.css">
+<link rel="stylesheet" href="./sample_ex_files/style.css">
 <meta property="og:url" content="">
-<meta property="og:title" content="[매물명]">
-<meta property="og:description" content="[간략설명]">
+<meta property="og:title" content="SAMPLE">
+<meta property="og:description" content="설명설명">
 <meta property="og:site_name" content="가온 파트너스">
-<meta property="og:type" content="website">
-<script type="text/javascript" src="./sample3_files/cid.generate.js"></script>
+<meta property="og:type" content="product">
+<meta property="og:image" content="img_ex.jpg">
+<meta property="product:price:amount" content="000">
+<meta property="product:price:currency" content="KRW">
+<meta property="product:sale_price:amount" content="000">
+<meta property="product:sale_price:currency" content="KRW">
+
+<!--naver map api -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=stnx91huMaDuWy7P0MxW&submodules=geocoder&callback=CALLBACK_FUNCTION"></script>
+
+<script type="text/javascript" src="./sample_ex_files/cid.generate.js"></script>
 <script type="text/javascript">
 var EC_FRONT_EXTERNAL_SCRIPT_VARIABLE_DATA = {"common_member_id_crypt":""};
 </script>
@@ -36,1954 +49,685 @@ getProductVer : function() { return 2; },
 isSDE : function() { return true; }};
 var EC_COMMON_UTIL = {convertSslForString : function(sString)
   { return sString.replace(/http:/gi, '');},
-  convertSslForHtml : function(sHtml) { return sHtml.replace(/((?:src|href)\s*=\s*['"])http:(\/\/(?:[a-z0-9\-_\.]+)\/)/ig, '$1$2');},
-  getProtocol : function() { return 'http'; },
-  moveSsl : function() { if (EC_COMMON_UTIL.getProtocol() === 'http')
-  { var oLocation = jQuery(window.location);
-    var sUrl = 'https://' + oLocation.attr('host') + oLocation.attr('pathname') + oLocation.attr('search');
-    window.location.replace(sUrl); }
-  }
+convertSslForHtml : function(sHtml) { return sHtml.replace(/((?:src|href)\s*=\s*['"])http:(\/\/(?:[a-z0-9\-_\.]+)\/)/ig, '$1$2');},
+getProtocol : function() { return 'http'; },
+moveSsl : function() { if (EC_COMMON_UTIL.getProtocol() === 'http')
+{ var oLocation = jQuery(window.location);
+  var sUrl = 'https://' + oLocation.attr('host') + oLocation.attr('pathname') + oLocation.attr('search');
+  window.location.replace(sUrl); }
+}
 };
 </script>
 
-<link rel="stylesheet" type="text/css" href="./sample3_files/optimizer.php">
-<style type="text/css"></style>
-<title>sample3</title>
-<meta name="path_role" content="MAIN">
+<link rel="stylesheet" type="text/css" href="./sample_ex_files/optimizer.php">
+<title>sample_detail</title>
+<meta name="path_role" content="PRODUCT_DETAIL">
+<meta name="design_html_path" content="/product/detail.html">
 </head>
 
-
-<body id="JD-MAIN">
-
-<style>
-    .top_popup{position:relative;height:0px}
-</style>
-<div class="top_popup" id="popupTop" style="display: block;"></div>
-
+<body id="JD-COMMON">
 <!-- #JD-Header -->
 <div id="JD-Header" style="padding-bottom: 0px;">
-    <div class="headerTop">
-        <div class="topWrap">
-          <div class="section_right">
-            <form id="searchBarForm" name="" action="#none" method="get" enctype="multipart/form-data"> <!-- action = "search.html" -->
-              <input id="banner_action" name="banner_action" value="" type="hidden">
-              <span class="xans-element- xans-layout xans-layout-searchheader ">
-                <!--
-                        $product_page=/product/detail.html
-                        $category_page=/product/list.html
-                    -->
-                    <fieldset>
-                      <legend>검색</legend>
-                      <input id="keyword" name="keyword" fw-filter="" fw-label="검색어" fw-msg="" class="inputTypeText" placeholder="" onmousedown="SEARCH_BANNER.clickSearchForm(this)" value="" type="text">
-                      <input type="image" src="./sample3_files/icon_bookmark.png" alt="검색" onclick="SEARCH_BANNER.submitSearchBanner(this); return false;">&nbsp;
-                    </fieldset>
-                  </span>
-                </form>
-                <a class="btn_bookmark" href="./sample3_files/bookmark.html" target="_blank" onclick="winPop(this.href); return false;">
-                  <img src="./sample3_files/icon_star_3.png" alt="북마크">
-                </a>
-            </div><!--// section_right -->
-        </div><!--// topWrap -->
-    </div><!--// headerTop END -->
+  <div class="headerTop">
+    <div class="topWrap">
+      <div class="section_right">
+        <form id="searchBarForm" name="" action="#search.html" method="get" enctype="multipart/form-data">
+          <input id="banner_action" name="banner_action" value="" type="hidden">
+          <span class="xans-element- xans-layout xans-layout-searchheader ">
+            <!--
+            $product_page=/product/detail.html
+            $category_page=/product/list.html -->
+            <fieldset>
+              <legend>검색</legend>
+              <input id="keyword" name="keyword" fw-filter="" fw-label="검색어" fw-msg="" class="inputTypeText" placeholder="" onmousedown="SEARCH_BANNER.clickSearchForm(this)" value="" type="text">
+              <input type="image" src="./sample_ex_files/icon_bookmark.png" alt="검색" onclick="SEARCH_BANNER.submitSearchBanner(this); return false;">&nbsp;
+            </fieldset>
+          </span>
+        </form>
+        <a class="btn_bookmark" href="bookmark.html" target="_blank" onclick="winPop(this.href); return false;">
+      <img src="./sample_ex_files/icon_star_3.png" alt="북마크"></a>
+    </div><!--// section_right -->
+  </div><!--// topWrap -->
+</div><!--// headerTop END -->
 
-    <div class="xans-element- xans-layout xans-layout-logotop logo ">
-      <div class="h1">
-            <a href="">
-              <img src="./sample3_files/logo.png" width="250" height="90" alt="가온 파트너스"></a>
-
+<div class="xans-element- xans-layout xans-layout-logotop logo ">
+  <div class="h1">
+    <a href="file:///Users/munhohyeon/Desktop/sample3_2.htm">
+      <img src="./sample_ex_files/logo.png" width="250" height="90" alt="가온 파트너스"></a>
+            <!--
             <ul class="specialCategory">
-                <li><a href="#none">공지사항</a></li>
-                <li><a href="#none">문의</a></li>
-                <li><a href="#none">이벤트</a></li>
+                <li><a href="#none">RIBBONTIE</a></li>
+                <li><a href="#none">NAH</a></li>
+                <li><a href="#none">UNTIE</a></li>
             </ul>
-
-          <!--  <div class="header_bnn">
+            -->
+            <div class="header_bnn">
                 <div class="swiper-container swiper-container-horizontal swiper-container-fade">
-                    <div class="xans-element- xans-bannermanage2 xans-bannermanage2-display-5 xans-bannermanage2-display xans-bannermanage2-5 swiper-wrapper" style="transition-duration: 0ms;">
-                    <div class="swiper-slide xans-record- swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="1" style="width: 205px; transform: translate3d(0px, 0px, 0px); opacity: 1; transition-duration: 0ms;">
-                    <a href="#none" alt="배너">
-                    <img class="banner_image" width="205" height="128" title="배너" alt="배너" rel="12-5" src="./sample3_files/bc7ba941a67d7ef5b16ea4b664200f60.jpg">
-                  </a>
-                </div>
-                <div class="swiper-slide xans-record- swiper-slide-prev swiper-slide-duplicate-next" data-swiper-slide-index="0" style="width: 205px; transform: translate3d(-205px, 0px, 0px); opacity: 1; transition-duration: 0ms;">
-                <a href="#none" alt="배너">
-                <img class="banner_image" width="205" height="128" title="배너" alt="배너" rel="11-5" src="./sample3_files/f2d642f2e4efefdccff052229ad206b0.jpg">
-              </a>
-            </div>
-            <div class="swiper-slide xans-record- swiper-slide-active" data-swiper-slide-index="1" style="width: 205px; transform: translate3d(-410px, 0px, 0px); opacity: 1; transition-duration: 0ms;">
-            <a href="#none" alt="배너">
-            <img class="banner_image" width="205" height="128" title="배너" alt="배너" rel="12-5" src="./sample3_files/bc7ba941a67d7ef5b16ea4b664200f60.jpg">
-          </a></div>
-<div class="swiper-slide xans-record- swiper-slide-duplicate swiper-slide-next swiper-slide-duplicate-prev" data-swiper-slide-index="0" style="width: 205px; transform: translate3d(-615px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-<a href="#none" alt="배너"><img class="banner_image" width="205" height="128" title="배너" alt="배너" rel="11-5" src="./sample3_files/f2d642f2e4efefdccff052229ad206b0.jpg"></a></div></div>
-                    <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span></div>
-
+                    <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
+                      <span class="swiper-pagination-bullet"></span>
+                      <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+                    </div>
+                    <!--
                     <div class="swiper-button-next sub"></div>
                     <div class="swiper-button-prev sub"></div>
-
+                    -->
                 </div>
-            </div> -->
+            </div>
         </div>
-
         <div class="icon_sns">
-            <a href="#none">
-              <img src="./sample3_files/icon_facebook.png" onmouseover="this.src=&#39;./sample3_files/icon_facebook_on.png&#39;" onmouseout="this.src=&#39;./sample3_files/icon_facebook.png&#39;" alt="페이스북"></a>
-            <a href="#none">
-              <img src="./sample3_files/icon_instagram.png" onmouseover="this.src=&#39;./sample3_files/icon_instagram_on.png&#39;" onmouseout="this.src=&#39;./sample3_files/icon_instagram.png&#39;" alt="인스타그램"></a>
-            <a href="#none">
-              <img src="./sample3_files/icon_kakao.png" onmouseover="this.src=&#39;./sample3_files/icon_kakao_on.png&#39;" onmouseout="this.src=&#39;./sample3_files/icon_kakao.png&#39;" alt="카카오"></a>
+            <a href="#ㅜn">
+              <img src="./sample_ex_files/icon_facebook.png" onmouseover="this.src=&#39; ./sample_ex_files/icon_facebook_on.png&#39;" onmouseout="this.src=&#39; ./sample_ex_files/icon_facebook.png&#39;" alt="페이스북"></a>
+            <a href="#n">
+              <img src="./sample_ex_files/icon_instagram.png" onmouseover="this.src=&#39; ./sample_ex_files/icon_instagram_on.png&#39;" onmouseout="this.src=&#39; ./sample_ex_files/icon_instagram.png&#39;" alt="인스타그램"></a>
+            <a href="#n">
+              <img src="./sample_ex_files/icon_kakao.png" onmouseover="this.src=&#39; ./sample_ex_files/icon_kakao_on.png&#39;" onmouseout="this.src=&#39; ./sample_ex_files/icon_kakao.png&#39;" alt="카카오"></a>
         </div>
-
 </div>
 <!--// logo END -->
 
-
-<div class="gnb">
-
-  <div class="inWrap">
+    <div class="gnb">
+        <div class="inWrap">
             <!--import(/jeonyul/html/category_banner.html)-->
             <a class="siteMenu" href="javascript:;" style="">
-              <img class="off" src="./sample3_files/btn_menu.jpg">&nbsp;
-              <img class="on" src="./sample3_files/btn_menu_on.jpg">&nbsp;
+              <img class="off" src="./sample_ex_files/btn_menu.jpg">&nbsp;
+              <img class="on" src="./sample_ex_files/btn_menu_on.jpg">&nbsp;
             </a>
             <a class="logo_fixed" href="#none">
-              <img src="./sample3_files/logo.png" alt="{$mall_name}">
+              <img src="./sample_ex_files/logo.png" alt="{$mall_name}">
             </a>
-
             <ul class="xans-element- xans-layout xans-layout-category">
               <li class="xans-record-">
-                <a href="#none">고급빌라</a>
+              <a href="#none">고급빌라</a></li>
+              <li class="xans-record-">
+                <a href="#none">고급오피스텔</a>
               </li>
-                <li class="xans-record-"><a href="#none">고급오피스텔</a></li>
-                <li class="xans-record-"><a href="#none">고급아파트</a></li>
-                <li class="xans-record-"><a href="#none">단독주택/타운하우스</a></li>
-                <li class="xans-record-"><a href="#none">빌딩/사무실/상가</a></li>
-                <li class="xans-record-"><a href="#none">신규분양</a></li>
-                <li class="xans-record-"><a href="#none">매각주관매물</a></li>
+              <li class="xans-record-">
+                <a href="#none">고급아파트</a>
+              </li>
+              <li class="xans-record-">
+                <a href="#none">단독주택/타운하우스</a>
+              </li>
+              <li class="xans-record-">
+                <a href="#none">빌딩/사무실/상가</a>
+              </li>
+              <li class="xans-record-">
+                <a href="#none">신규분양</a>
+              </li>
+              <li class="xans-record-">
+                <a href="#none">매각주관매물</a>
+              </li>
             </ul>
           </div>
 
-          <div class="cateWrap">
-            <div class="xans-element- xans-layout xans-layout-category cateAll">
-              <ul id="category_all" class="cateDep_1">
-                <li class="xans-record- cateMenu_1"><a href="#none">고급오피스텔</a><ul class="cateDep_2"><li class="cateMenu_2"><a href="#none">---</a></li><li class="cateMenu_2"><a href="#none">---</a></li><li class="cateMenu_2"><a href="#none">---</a></li></ul></li>
-                <li class="xans-record- cateMenu_1"><a href="#none">고급아파트</a><ul class="cateDep_2"><li class="cateMenu_2"><a href="#none">---</a></li><li class="cateMenu_2"><a href="#none">---</a></li></ul></li>
-                <li class="xans-record- cateMenu_1"><a href="#none">단독주택/타운하우스</a><ul class="cateDep_2"><li class="cateMenu_2"><a href="#none">---</a></li><li class="cateMenu_2"><a href="#none">---</a></li><li class="cateMenu_2"><a href="#none">---</a></li></ul></li>
-                <li class="xans-record- cateMenu_1"><a href="#none">빌딩/사무실/상가</a><ul class="cateDep_2"><li class="cateMenu_2"><a href="#none">---</a></li><li class="cateMenu_2"><a href="#none">---</a></li></ul></li>
-                <li class="xans-record- cateMenu_1"><a href="#none">신규분양</a><ul class="cateDep_2"><li class="cateMenu_2"><a href="#none">---</a></li></ul></li>
-                <li class="xans-record- cateMenu_1"><a href="#none">매각주관물</a><ul class="cateDep_2"><li class="cateMenu_2"><a href="#none">---</a></li><li class="cateMenu_2"><a href="#none">---</a></li></ul></li>
-                <li class="xans-record- cateMenu_1"><a href="#none">신규매물</a><ul class="cateDep_2"><li class="cateMenu_2"><a href="#none">---</a></li><li class="cateMenu_2"><a href="#none">---</a></li><li class="cateMenu_2"><a href="#none">---</a></li></ul></li>
-                <li class="xans-record- cateMenu_1"><a href="#none">인기매물</a><ul class="cateDep_2"><li class="cateMenu_2"><a href="#none">---</a></li><li class="cateMenu_2"><a href="#none">---</a></li></ul></li>
-                <li class="xans-record- cateMenu_1"><a href="#none">추천매물</a></li>
-              </ul>
-            </div>
-          </div>
-</div>
-<!--// gnb END -->
+        <div class="cateWrap">
+          <div class="xans-element- xans-layout xans-layout-category cateAll">
+            <ul id="category_all" class="cateDep_1">
+              <li class="xans-record- cateMenu_1">
+                <a href="#none">===</a>
+                <ul class="cateDep_2">
+                  <li class="cateMenu_2">
+                    <a href="#none">---</a>
+                  </li>
+                  <li class="cateMenu_2">
+                    <a href="#none">---</a>
+                  </li>
+                  <li class="cateMenu_2">
+                    <a href="#none">---</a>
+                  </li>
+                </ul>
+              </li>
 
-</div>
+              <li class="xans-record- cateMenu_1">
+                <a href="#none">===</a>
+                <ul class="cateDep_2">
+                  <li class="cateMenu_2">
+                    <a href="#none">---</a>
+                  </li>
+                  <li class="cateMenu_2">
+                    <a href="#none">---</a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="xans-record- cateMenu_1">
+                <a href="#none">===</a>
+                <ul class="cateDep_2">
+                  <li class="cateMenu_2">
+                    <a href="#none">---</a>
+                  </li>
+                  <li class="cateMenu_2">
+                    <a href="#none">---</a>
+                  </li>
+                  <li class="cateMenu_2">
+                    <a href="#none">---</a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="xans-record- cateMenu_1">
+                <a href="#none">===</a>
+                <ul class="cateDep_2">
+                  <li class="cateMenu_2">
+                    <a href="#none">---</a>
+                  </li>
+                  <li class="cateMenu_2">
+                    <a href="#none">---</a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="xans-record- cateMenu_1">
+                <a href="#none">===</a>
+                <ul class="cateDep_2">
+                  <li class="cateMenu_2">
+                    <a href="#none">---</a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="xans-record- cateMenu_1">
+                <a href="#none">===</a>
+                <ul class="cateDep_2">
+                  <li class="cateMenu_2">
+                    <a href="#none">---</a>
+                  </li>
+                  <li class="cateMenu_2">
+                    <a href="#none">---</a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="xans-record- cateMenu_1">
+                <a href="#none">===</a>
+                <ul class="cateDep_2">
+                  <li class="cateMenu_2">
+                    <a href="#none">---</a>
+                  </li>
+                  <li class="cateMenu_2">
+                    <a href="#none">---</a>
+                  </li>
+                  <li class="cateMenu_2">
+                    <a href="#none">---</a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="xans-record- cateMenu_1">
+                <a href="#none">===</a>
+                <ul class="cateDep_2">
+                  <li class="cateMenu_2">
+                    <a href="#none">---</a>
+                  </li>
+                  <li class="cateMenu_2">
+                    <a href="">---</a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="xans-record- cateMenu_1">
+                <a href="#none">===</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div><!--// gnb END -->
+    </div>
 <!--// #JD-Header END -->
 
 
-
-
-<!------------------------------------------------------------------------------------>
-<div class="leftWrap" id="popupLeft" style="display: block;"></div>
-
-
-
-<style>
-    .leftQuick{display:none;position:fixed;left:0;top:50%;background:rgba(255,255,255,0.8);z-index:1000}
-    .leftQuick ul{border:1px solid #eee;padding:10px}
-    .leftQuick a{display:block;height:24px;line-height:24px;font-size:11px;padding:0 10px;border-radius:5px;color:#555}
-    .leftQuick .on a{background:#eee;color:#000}
-</style>
-
-
-  <div class="leftQuick" style="margin-top: -59px; display: none;">
-    <ul>
-      <li class="qmenu1 on"><a href="#n">제목이나 타이틀</a></li>
-      <li class="qmenu2"><a href="#n">제목이나 타이틀</a></li>
-      <li class="qmenu3"><a href="#n">제목이나 타이틀</a></li>
-      <li class="qmenu4"><a href="#n">제목이나 타이틀</a></li>
-    </ul>
-  </div>
-
-
-
 <div id="JD-Container">
-
-
-<!-- 메인 레이어팝업 -->
+    <div class="contents">
 <!--
-<div class="popupWrap" id="pop" style="display: block;">
+    $category_page = /product/list.html
+    $project_page = /product/project.html
+    $jointbuy_page = /product/jointbuy.html
+-->
 
-[ 메인 6종 팝업 설정 ]
-
-1. 팝업의 왼쪽과 상단의 위치를 원하는 위치로 수정합니다. ex) left: 200px; top: 200px;
-2. 배너를 순서대로 링크와 이미경로를 입력합니다. [링크 : href="" ] [이미지 : src="" ]
-3. 배너 버튼 설정에서 순서대로 배너의 이름을 수정합니다. (<br /> 태그 사용으로 두줄 권장)
-4. 배너의 크기는 가로 300px, 세로 380px 입니다. 이상의 사이즈는 자동으로 리사이즈됩니다.
-
-
-<style type="text/css">
-.popupWrap {
-    left: 190px; /* 팝업의 왼쪽 위치 */
-    top: 162px;  /* 팝업의 상단 위치 */
-    display: none !important    /* 팝업 노출여부 (노출 안하기는 none 을 입력하세요.) 예시- display: none */
-}
-</style>
-
-<div class="popupView"> 배너 설정
-    <div class="view1" style=""><a href="#none"><img src="./sample3_files/img_popup01.jpg"></a></div>
-    <div class="view2" style="display: block;"><a href="#none"><img src="./sample3_files/img_popup02.jpg"></a></div>
-    <div class="view3" style="display: block;"><a href="#none"><img src="./sample3_files/img_popup03.jpg"></a></div>
-    <div class="view4" style="display: block;"><a href="#none"><img src="./sample3_files/img_popup04.jpg"></a></div>
-    <div class="view5" style="display: block;"><a href="#none"><img src="./sample3_files/img_popup05.jpg"></a></div>
-    <div class="view6" style="display: block; opacity: 0.981775;"><a href="#none"><img src="./sample3_files/img_popup06.jpg"></a></div>
-</div>
-
-
-<div class="btnList">
-    <ul><li class=""><a>2017년<br>대박나세요!</a></li>
-        <li class=""><a>움직이는<br>팝업제공!</a></li>
-        <li class=""><a>디자인자료실<br>이용하세요</a></li>
-        <li class=""><a>쇼핑이 편한<br>쇼핑몰입니다</a></li>
-        <li class=""><a>원하는 문구를<br>입력하세요</a></li>
-        <li class="on"><a>모바일<br>무료제공!</a></li>
-    </ul>
-    <div class="border" style="left: 0px; top: 0px;"></div>
-</div>
-
-
-<div class="close">
-    <form method="post" action="#none/" name="pop_form">
-        <span id="check"><input type="checkbox" value="checkbox" name="chkbox" id="chkday"><label for="chkday">오늘 하루동안 보지 않기</label></span>
-        <span id="close">Close</span>
-    </form>
-</div>
-</div>-->
-<!--// popupWrap END -->
-
-
-<!-- 메인 비쥬얼 (롤링배너) : C 스토어 배너관리v2 (메인 비쥬얼 롤링배너) -->
-<div class="main_top" style="position:relative;width:100%;margin:0 auto 50px">
-    <div class="swiper-container swiper-container-horizontal">
-        <div class="xans-element- xans-bannermanage2 xans-bannermanage2-display-1 xans-bannermanage2-display xans-bannermanage2-1 swiper-wrapper" style="transform: translate3d(-3390px, 0px, 0px); transition-duration: 0ms;">
-
-          <div class="swiper-slide xans-record- swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="1" style="width: 1665px; margin-right: 30px;">
-            <a href="#n" alt="배너">
-              <img class="banner_image" width="1920" height="500" title="배너" alt="배너" rel="2-1" src="./sample3_files/sample_img.jpg">
-            </a>
-          </div>
-
-          <div class="swiper-slide xans-record- swiper-slide-prev swiper-slide-duplicate-next" data-swiper-slide-index="0" style="width: 1665px; margin-right: 30px;">
-            <a href="#n" alt="배너">
-              <img class="banner_image" width="1920" height="500" title="배너" alt="배너" rel="1-1" src="./sample3_files/sample_img.jpg">
-            </a>
-          </div>
-
-          <div class="swiper-slide xans-record- swiper-slide-active" data-swiper-slide-index="1" style="width: 1665px; margin-right: 30px;">
-            <a href="#n" alt="배너">
-              <img class="banner_image" width="1920" height="500" title="배너" alt="배너" rel="2-1" src="./sample3_files/sample_img2.jpg">
-            </a>
-          </div>
-
-          <div class="swiper-slide xans-record- swiper-slide-duplicate swiper-slide-next swiper-slide-duplicate-prev" data-swiper-slide-index="0" style="width: 1665px; margin-right: 30px;">
-            <a href="#n" alt="배너">
-              <img class="banner_image" width="1920" height="500" title="배너" alt="배너" rel="1-1" src="./sample3_files/sample_img2.jpg">
-            </a>
-          </div>
-        </div>
-        <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
-          <span class="swiper-pagination-bullet"></span>
-          <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-    </div>
-    <!--// swiper-container END -->
-</div>
-
-
-<!-- 1번 라인 삭제 -->
-<div class="section_bnn">
-    <!-- 메인 박스배너 -->
-    <div class="xans-element- xans-bannermanage2 xans-bannermanage2-display-2 xans-bannermanage2-display xans-bannermanage2-2 mainBnn_sub">
-      <div class="bnn_box sub_bnn1 xans-record-">
-        <a href="#none" alt="배너">
-          <img class="banner_image" width="390" height="182" title="배너" alt="배너" rel="4-2" src="./sample3_files/img_m1.jpg">
-        </a>
-      </div>
-
-      <div class="bnn_box sub_bnn2 xans-record-">
-        <a href="#none" alt="배너">
-          <img class="banner_image" width="390" height="182" title="배너" alt="배너" rel="5-2" src="./sample3_files/img_m2.jpg">
-        </a>
-      </div>
-
-      <div class="bnn_box sub_bnn3 xans-record-">
-        <a href="#none" alt="배너">
-          <img class="banner_image" width="390" height="182" title="배너" alt="배너" rel="6-2" src="./sample3_files/img_m3.jpg">
-        </a>
-      </div>
-</div>
-</div>
-
-<!-- 메인진열 1번 -->
-<div id="quick1" class="xans-element- xans-product xans-product-listmain-1 xans-product-listmain xans-product-1 prd_week_best">
-  <h2 class="tit_best">
-    <span>제목이나 설명</span>
-  </h2>
-<div class="week_best swiper-container swiper-container-horizontal">
-        <!--
-            $count = 8
-                ※ 노출시킬 상품의 갯수를 숫자로 설정할 수 있으며, 설정하지 않을경우, 최대 200개로 자동제한됩니다.
-                ※ 상품 노출갯수가 많으면 쇼핑몰에 부하가 발생할 수 있습니다.
-            $basket_result = /product/add_basket.html
-            $basket_option = /product/basket_option.html
-        -->
-        <div class="swiper-wrapper" style="transform: translate3d(-1356px, 0px, 0px); transition-duration: 0ms;">
-              <div id="anchorBoxId_158" class="swiper-slide xans-record- swiper-slide-prev" data-swiper-slide-index="0" style="width: 196px; margin-right: 30px;">
-                <img src="./sample3_files/01.jpg" id="eListPrdImage158_2" alt="SAMPLE">
-                &nbsp;<a class="over" href="#none" name="anchorBoxName_158">
-                  <div class="txtWrap">
-                    <p><span style="font-size:12px;color:#ffffff;">고급빌라 매매 매물</span></p>
-                    <ul class="xans-element- xans-product xans-product-listitem-1 xans-product-listitem xans-product-1">
-                      <li class=" xans-record-">
-                        <span class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;">간략설명</span> :
-                        </span>
-                        <span style="font-size:12px;color:#ffffff;">설명설명설명</span>
-                      </li>
-
-                      <li class=" xans-record-">
-                        <span class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;font-weight:bold;">가격</span> :
-                        </span> <span style="font-size:12px;color:#ffffff;font-weight:bold;">~~~원</span>
-                        <span id="span_product_tax_type_text" style=""> </span>
-                      </li>
-                    </ul>
-                  </div>
-                </a>
-            </div>
-
-            <div id="anchorBoxId_159" class="swiper-slide xans-record- swiper-slide-active" data-swiper-slide-index="1" style="width: 196px; margin-right: 30px;">
-                <img src="./sample3_files/02.jpg" id="eListPrdImage159_2" alt="SAMPLE">
-                &nbsp;<a class="over" href="#none" name="anchorBoxName_159">
-                    <div class="txtWrap">
-                        <p><span style="font-size:12px;color:#ffffff;">고급빌라 전세 매물</span></p>
-                        <ul class="xans-element- xans-product xans-product-listitem-1 xans-product-listitem xans-product-1">
-                          <li class=" xans-record-">
-                            <span class="displaynone">
-                              <span style="font-size:12px;color:#ffffff;">간략설명</span> :
-                            </span>
-                            <span style="font-size:12px;color:#ffffff;">설명설명설명</span>
-                          </li>
-
-                          <li class=" xans-record-">
-                            <span class="displaynone">
-                              <span style="font-size:12px;color:#ffffff;font-weight:bold;">가격</span> :
-                            </span>
-                            <span style="font-size:12px;color:#ffffff;font-weight:bold;">~~~원</span>
-                            <span id="span_product_tax_type_text" style=""> </span>
-                          </li>
-                        </ul>
-                      </div>
-                    </a>
-                  </div>
-
-            <div id="anchorBoxId_160" class="swiper-slide xans-record- swiper-slide-next" data-swiper-slide-index="2" style="width: 196px; margin-right: 30px;">
-              <img src="./sample3_files/03.jpg" id="eListPrdImage160_2" alt="SAMPLE">
-                &nbsp;<a class="over" href="#none" name="anchorBoxName_160">
-                  <div class="txtWrap">
-                    <p><span style="font-size:12px;color:#ffffff;">고급빌라 분양 매물</span></p>
-                      <ul class="xans-element- xans-product xans-product-listitem-1 xans-product-listitem xans-product-1">
-                        <li class=" xans-record-">
-                          <span class="displaynone">
-                            <span style="font-size:12px;color:#ffffff;">간략설명</span> :
-                          </span>
-                          <span style="font-size:12px;color:#ffffff;">설명설명설명</span>
-                        </li>
-
-                        <li class=" xans-record-">
-                          <span class="displaynone">
-                            <span style="font-size:12px;color:#ffffff;font-weight:bold;">판매가</span> :
-                          </span>
-                          <span style="font-size:12px;color:#ffffff;font-weight:bold;">~~~원</span>
-                          <span id="span_product_tax_type_text" style=""> </span>
-                        </li>
-                      </ul>
-                    </div>
-                  </a>
-                </div>
-
-            <div id="anchorBoxId_161" class="swiper-slide xans-record-" data-swiper-slide-index="3" style="width: 196px; margin-right: 30px;">
-              <img src="./sample3_files/04.jpg" id="eListPrdImage161_2" alt="SAMPLE">
-                &nbsp;<a class="over" href="#none" name="anchorBoxName_161">
-                  <div class="txtWrap">
-                    <p><span style="font-size:12px;color:#ffffff;">고급빌라 렌트 매물</span></p>
-                    <ul class="xans-element- xans-product xans-product-listitem-1 xans-product-listitem xans-product-1">
-                      <li class=" xans-record-">
-                        <span class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;">간략설명</span> :
-                        </span> <span style="font-size:12px;color:#ffffff;">설명설명설명</span>
-                      </li>
-
-                      <li class=" xans-record-">
-                        <span class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;font-weight:bold;">판매가</span> :
-                        </span>
-                        <span style="font-size:12px;color:#ffffff;font-weight:bold;">~~~원</span>
-                        <span id="span_product_tax_type_text" style=""> </span>
-                      </li>
-                    </ul>
-                  </div>
-                </a>
-              </div>
-
-              <div id="anchorBoxId_162" class="swiper-slide xans-record-" data-swiper-slide-index="4" style="width: 196px; margin-right: 30px;">
-                <img src="./sample3_files/05.jpg" id="eListPrdImage162_2" alt="SAMPLE">
-                  &nbsp;<a class="over" href="#none" name="anchorBoxName_162">
-                    <div class="txtWrap">
-                      <p><span style="font-size:12px;color:#ffffff;">고급 단독주택 매물</span></p>
-                        <ul class="xans-element- xans-product xans-product-listitem-1 xans-product-listitem xans-product-1">
-                          <li class=" xans-record-">
-                            <span class="displaynone">
-                              <span style="font-size:12px;color:#ffffff;">간략설명</span> :
-                            </span> <span style="font-size:12px;color:#ffffff;">설명설명설명</span>
-                          </li>
-
-                          <li class=" xans-record-">
-                            <span class="displaynone">
-                              <span style="font-size:12px;color:#ffffff;font-weight:bold;">판매가</span> :
-                            </span>
-                            <span style="font-size:12px;color:#ffffff;font-weight:bold;">원</span>
-                            <span id="span_product_tax_type_text" style=""> </span>
-                          </li>
-                        </ul>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-<!--// swiper-wrapper END -->
-</div>
-
-
-<!--// week_best END -->
-<div class="swiper-next2"></div>
-<div class="swiper-prev2"></div>
-</div>
-<!--// prd_week_best END -->
-
-
-<!-- 메인진열 분류 2번 -->
-<div id="quick2" class="xans-element- xans-product xans-product-listmain-2 xans-product-listmain xans-product-2 prd_main main_list_custom2"><!--
-        $count = 12
-            ※ 노출시킬 상품의 갯수를 숫자로 설정할 수 있으며, 설정하지 않을경우, 최대 200개로 자동제한됩니다.
-            ※ 상품 노출갯수가 많으면 쇼핑몰에 부하가 발생할 수 있습니다.
-    -->
-<h2 class="tit_common">
-  <span>제목이나 타이틀</span></h2>
-  <ul class="list_common list_type4 new_item">
-
-    <li id="anchorBoxId_158" class="xans-record-">
-      <div class="thumbWrap">
-        <a class="thumb" href="file:///Users/munhohyeon/Desktop/sample3_files/sample_ex.htm" name="anchorBoxName_158">
-          <img src="./sample3_files/img_main1.jpg" alt="SAMPLE PRODUCT">
-          <img class="on" src="./sample3_files/img_main2.jpg" alt="SAMPLE PRODUCT">
-        </a>
-        <div class="iconBox">
-          <a class="thumb" href="file:///Users/munhohyeon/Desktop/sample3_files/sample_ex.htm" name="anchorBoxName_158"><span class="option"></span></a><span><a onclick="optionPreview(this,&#39;listmain-2&#39;,158,&#39;T&#39;)" "=""><img src="./sample3_files/icon_201710311441066800.png" id="btn_preview_listmain-2158" class="option_preview" alt="옵션 미리보기  "></a><span class="icon_txt">옵션보기</span></span>
-                        <span class="wish"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="158" categoryno="1" icon_status="off" login_status="F" individual-set="F"><span class="icon_txt">관심상품</span></span>
-                        <span class="cart"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(158,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"><span class="icon_txt">장바구니</span></span>
-                        <span class="zoom"><img src="./sample3_files/icon_201710311440593000.png" onclick="zoom(&#39;158&#39;, &#39;1&#39;, &#39;3&#39;,&#39;&#39;, &#39;&#39;);" style="cursor:pointer" alt="상품 큰 이미지 보기  "><span class="icon_txt">미리보기</span></span>
-                    </div>
-                    <span class="discount_rate rate30">25<span>%</span></span>
-
-            </div>
-            <span class="wish" style="display:none">
-              <img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="158" categoryno="1" icon_status="off" login_status="F" individual-set="F"></span>
-            <span style="display:none">
-              <img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(158,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"></span>
-
-            <div class="opt_set">
-                <p class="tit">
-                  <a href="file:///Users/munhohyeon/Desktop/sample3_files/sample_ex.htm">
-                    <span style="font-size:14px;color:#555555;">삼성동 상지카일룸</span>
-                  </a>
-                  <span class="tit_icon">
-                    <img src="./sample3_files/icon_201709271323437200.gif" class="icon_img" alt="추천">
-                    <img src="./sample3_files/icon_201709271323473400.gif" class="icon_img" alt="New">
-                  </span>
-                </p>
-
-                <ul class="xans-element- xans-product xans-product-listitem-2 xans-product-listitem xans-product-2 opt">
-                  <li class=" xans-record-">
-                    <span style="font-size:12px;color:#a8a8a8;text-decoration:line-through;">~~~원</span>
-                  </li>
-                  <li class=" xans-record-">
-                    <span style="font-size:12px;color:#242424;font-weight:bold;">~~~원</span>
-                    <span id="span_product_tax_type_text" style=""> </span>
-                  </li>
-                </ul>
-              </div>
-
-
-        <li id="anchorBoxId_159" class="xans-record-">
-            <div class="thumbWrap">
-                <a class="thumb" href="#none" name="anchorBoxName_159">
-                    <img src="./sample3_files/img_main2.jpg" alt="SAMPLE PRODUCT">
-                    <img class="on" src="./sample3_files/img_main1.jpg" alt="SAMPLE PRODUCT">
-                  </a>
-                  <div class="iconBox">
-                    <a class="thumb" href="#none" name="anchorBoxName_159">
-                        <span class="option"></span>
+<!-- 상단 제품 정보  -->
+<div class="xans-element- xans-product xans-product-detail detailTop">
+  <div class="detailArea">
+        <!-- 이미지 영역 -->
+        <div class="xans-element- xans-product xans-product-image imgArea">
+          <div class="keyImg ">
+                <div class="thumbnail">
+                    <a href="#na" alt="P00000GD" onclick="window.open(this.href, &#39;image_zoom2&#39;, &#39;toolbar=no,scrollbars=auto,resizable=yes,width=450,height=693,left=0,top=0&#39;, this);return false;">
+                        <img src="./sample_ex_files/img_ex.jpg" alt="SAMPLE PRODUCT" class="BigImage ">
                       </a>
-                      <span>
-                        <a onclick="optionPreview(this,&#39;listmain-2&#39;,159,&#39;T&#39;)" "="">
-                          <img src="./sample3_files/icon_201710311441066800.png" id="btn_preview_listmain-2159" class="option_preview" alt="옵션 미리보기  ">
-                        </a>
-                          <span class="icon_txt">옵션보기</span>
-                        </span>
-                        <span class="wish"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="159" categoryno="1" icon_status="off" login_status="F" individual-set="F">
-                          <span class="icon_txt">관심상품</span>
-                        </span>
-                        <span class="cart"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(159,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart">
-                          <span class="icon_txt">장바구니</span>
-                        </span>
-                        <span class="zoom"><img src="./sample3_files/icon_201710311440593000.png" onclick="zoom(&#39;159&#39;, &#39;1&#39;, &#39;3&#39;,&#39;&#39;, &#39;&#39;);" style="cursor:pointer" alt="상품 큰 이미지 보기  "><span class="icon_txt">미리보기</span></span>
-                    </div>
-
-                    <span class="discount_rate rate40">33
-                      <span>%</span>
-                    </span>
+                    <div id="zoom_wrap"></div>
+                </div>
             </div>
+<!-- 참고 : 뉴상품관리 전용 모듈입니다. 뉴상품관리 이외의 곳에서 사용하면 정상동작하지 않습니다. -->
+<div class="xans-element- xans-product xans-product-addimage listImg"><ul>
 
-            <span class="wish" style="display:none"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="159" categoryno="1" icon_status="off" login_status="F" individual-set="F"></span>
-            <span style="display:none"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(159,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"></span>
-            <div class="opt_set">
-                <p class="tit"><a href="#none/"><span style="font-size:12px;color:#555555;">한남동 클라인하우스</span></a><span class="tit_icon">  <img src="./sample3_files/icon_201709271323437200.gif" class="icon_img" alt="추천"> <img src="./sample3_files/icon_201709271323473400.gif" class="icon_img" alt="New">   </span></p>
-                <ul class="xans-element- xans-product xans-product-listitem-2 xans-product-listitem xans-product-2 opt"><li class=" xans-record-"><span style="font-size:12px;color:#a8a8a8;text-decoration:line-through;">~~~원</span></li>
-<li class=" xans-record-"><span style="font-size:12px;color:#242424;font-weight:bold;">~~~원</span><span id="span_product_tax_type_text" style=""> </span></li>
-<li class=" xans-record-">
-</li>
-</ul>
+                                    </ul>
 </div>
-        </li>
-<li id="anchorBoxId_160" class="xans-record-">
-            <div class="thumbWrap">
-                <a class="thumb" href="#none" name="anchorBoxName_160">
-                    <img src="./sample3_files/img_main3.jpg" alt="SAMPLE PRODUCT">
-                    <img class="on" src="./sample3_files/img_main4.jpg" alt="SAMPLE" style="opacity: 0;">                    </a><div class="iconBox">
-                      <a class="thumb" href="#none" name="anchorBoxName_160">
-                        <span class="option"></span></a><span><a onclick="optionPreview(this,&#39;listmain-2&#39;,160,&#39;T&#39;)" "=""><img src="./sample3_files/icon_201710311441066800.png" id="btn_preview_listmain-2160" class="option_preview" alt="옵션 미리보기  "></a><span class="icon_txt">옵션보기</span></span>
-                        <span class="wish"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="160" categoryno="1" icon_status="off" login_status="F" individual-set="F"><span class="icon_txt">관심상품</span></span>
-                        <span class="cart"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(160,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"><span class="icon_txt">장바구니</span></span>
-                        <span class="zoom"><img src="./sample3_files/icon_201710311440593000.png" onclick="zoom(&#39;160&#39;, &#39;1&#39;, &#39;3&#39;,&#39;&#39;, &#39;&#39;);" style="cursor:pointer" alt="상품 큰 이미지 보기  "><span class="icon_txt">미리보기</span></span>
-                    </div>
-                    <span class="discount_rate rate60">57<span>%</span></span>
+<!-- //참고 -->
+<div class="prd_control ">
+  <span class="prev" style="display:;">
+    <a href="#prev" onclick="ImagePreview.viewProductBtnClick(&#39;prev&#39;);">
+      <img src="./sample_ex_files/btn_prd_prev.gif" alt="이전상품">
+    </a>
+  </span>
+  <span class="zoom">
+    <a href="#n" onclick="window.open(this.href, &#39;image_zoom2&#39;, &#39;toolbar=no,scrollbars=auto,resizable=yes,width=560,height=710,left=0,top=0&#39;, this);return false;">
+      <img src="./sample_ex_files/btn_prd_zoom.gif" alt="확대보기">
+    </a>
+  </span>
+  <span class="next" style="display:;">
+    <a href="#next" onclick="ImagePreview.viewProductBtnClick(&#39;next&#39;);">
+      <img src="./sample_ex_files/btn_prd_next.gif" alt="다음 제품 보기">
+    </a>
+  </span>
+</div>
 
+
+<!-- 참고 : 뉴상품관리 전용 모듈입니다. 뉴상품관리 이외의 곳에서 사용하면 정상동작하지 않습니다. -->
+<div class="color displaynone"></div>
+<div class="likeButton displaynone">
+  <button type="button">
+    <span class="title">좋아요</span>
+    <span class="count"></span>
+  </button>
+</div>
+</div>
+<!-- //이미지 영역 -->
+
+        <!-- 상세정보 내역 -->
+        <div class="infoArea">
+            <div class="headingArea ">
+                <h5> SAMPLE </h5>
+                <span class="delivery displaynone">()</span>
+                <span class="icon">
+                <img src="./sample_ex_files/icon_201709271323437200.gif" class="icon_img" alt="추천">
+                <img src="./sample_ex_files/icon_201709271323473400.gif" class="icon_img" alt="New">
+              </span>
             </div>
-            <span class="wish" style="display:none"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="160" categoryno="1" icon_status="off" login_status="F" individual-set="F"></span>
-            <span style="display:none"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(160,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"></span>
-            <div class="opt_set">
-                <p class="tit"><a href="#none"><span style="font-size:12px;color:#555555;">논현동 라폴리움</span></a><span class="tit_icon">  <img src="./sample3_files/icon_201709271323437200.gif" class="icon_img" alt="추천"> <img src="./sample3_files/icon_201709271323473400.gif" class="icon_img" alt="New">   </span></p>
-                <ul class="xans-element- xans-product xans-product-listitem-2 xans-product-listitem xans-product-2 opt"><li class=" xans-record-"><span style="font-size:12px;color:#a8a8a8;text-decoration:line-through;">~~~원</span></li>
-<li class=" xans-record-"><span style="font-size:12px;color:#242424;font-weight:bold;">~~~원</span><span id="span_product_tax_type_text" style=""> </span></li>
-</ul>
-</div>
-        </li>
+            <div class="xans-element- xans-product xans-product-detaildesign">
+              <!--
+                    출력 갯수 지정 변수, 없으면 설정된 전체가 나옵니다.
+                    count = 10
+                -->
+<table class="th_icon line" border="1" summary="">
+<caption> 기본 정보</caption>
+<tbody>
+  <tr class=" xans-record-">
+    <th scope="row">
+      <span style="font-size:16px;color:#555555;">매물명</span>
+    </th>
+    <td><span style="font-size:16px;color:#555555;">용산 고급주택</span></td>
+  </tr>
+<tr class=" xans-record-">
+<th scope="row">
+  <span style="font-size:12px;color:#000000;font-weight:bold;">매물명</span>
+</th>
+<td><span style="font-size:12px;color:#000000;font-weight:bold;">
+  <strong id="span_product_name_text">삼성동 고급 아파트</strong>
+  <input id="product_price" name="product_price" value="" type="hidden"></span>
+</td>
+                        </tr>
+<tr class=" xans-record-">
+<th scope="row"><span style="font-size:12px;color:#555555;">매물종류</span></th>
+                            <td><span style="font-size:12px;color:#555555;">고급아파트</span></td>
+                        </tr>
+<tr class=" xans-record-">
+<th scope="row"><span style="font-size:12px;color:#555555;">거래형태</span></th>
+                            <td><span style="font-size:12px;color:#555555;">렌트</span></td>
+                        </tr>
+<tr class=" xans-record-">
+<th scope="row"><span style="font-size:12px;color:#555555;">분양면적</span></th>
+                            <td><span style="font-size:12px;color:#555555;"><span class="delv_price_B">
+                              <input id="delivery_cost_prepaid" name="delivery_cost_prepaid" value="P" type="hidden">XX평</span></span></td>
+                        </tr>
+<tr class=" xans-record-">
+<th scope="row"><span style="font-size:12px;color:#555555;">세대 수</span></th>
+                            <td><span style="font-size:12px;color:#555555;"><span class="delv_price_B">
+                              <input id="delivery_cost_prepaid" name="delivery_cost_prepaid" value="P" type="hidden">278세대</span></span></td>
+                        </tr>
+</tbody>
+</table>
 
-<li id="anchorBoxId_161" class="xans-record-">
-            <div class="thumbWrap">
-                <a class="thumb" href="#none" name="anchorBoxName_161">
-                    <img src="./sample3_files/img_main4.jpg" alt="SAMPLE PRODUCT">
-                    <img class="on" src="./sample3_files/img_main3.jpg" alt="SAMPLE PRODUCT" style="opacity: 0;"></a><div class="iconBox"><a class="thumb" href="#none" name="anchorBoxName_161">
-                        <span class="option"></span></a><span><a onclick="optionPreview(this,&#39;listmain-2&#39;,161,&#39;T&#39;)" "=""><img src="./sample3_files/icon_201710311441066800.png" id="btn_preview_listmain-2161" class="option_preview" alt="옵션 미리보기  "></a><span class="icon_txt">옵션보기</span></span>
-                        <span class="wish"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="161" categoryno="1" icon_status="off" login_status="F" individual-set="F"><span class="icon_txt">관심상품</span></span>
-                        <span class="cart"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(161,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"><span class="icon_txt">장바구니</span></span>
-                        <span class="zoom"><img src="./sample3_files/icon_201710311440593000.png" onclick="zoom(&#39;161&#39;, &#39;1&#39;, &#39;3&#39;,&#39;&#39;, &#39;&#39;);" style="cursor:pointer" alt="상품 큰 이미지 보기  "><span class="icon_txt">미리보기</span></span>
-                    </div>
-                    <span class="discount_rate rate60">57<span>%</span></span>
+<!-- 일반 맵이미지
+<div class="keyImg ">
+      <div class="thumbnail">
+        <br><br><br>
+              <img src="./sample_ex_files/img_map.png" height="362" width="456" alt="map" class="BigImage ">                    </a>
+          <div id="zoom_wrap"></div>
+      </div>
+  </div>
+</div> -->
 
-            </div>
-            <span class="wish" style="display:none"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="161" categoryno="1" icon_status="off" login_status="F" individual-set="F"></span>
-            <span style="display:none"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(161,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"></span>
-            <div class="opt_set">
-                <p class="tit"><a href="#none"><span style="font-size:12px;color:#555555;">청담동 상지리츠빌 4차</span></a><span class="tit_icon">  <img src="./sample3_files/icon_201709271323437200.gif" class="icon_img" alt="추천"> <img src="./sample3_files/icon_201709271323473400.gif" class="icon_img" alt="New">   </span></p>
-                <ul class="xans-element- xans-product xans-product-listitem-2 xans-product-listitem xans-product-2 opt"><li class=" xans-record-"><span style="font-size:12px;color:#a8a8a8;text-decoration:line-through;">~~~원</span></li>
-<li class=" xans-record-"><span style="font-size:12px;color:#242424;font-weight:bold;">~~~원</span><span id="span_product_tax_type_text" style=""> </span></li>
-</ul>
-</div>
-        </li>
+<!--naver map api -->
+<br><br>
 
-<li id="anchorBoxId_162" class="xans-record-">
-            <div class="thumbWrap">
-                <a class="thumb" href="#none" name="anchorBoxName_162">
-                    <img src="./sample3_files/img_main5.jpg" alt="SAMPLE PRODUCT">
-                    <img class="on" src="./sample3_files/img_main6.jpg" alt="SAMPLE PRODUCT">                    </a><div class="iconBox"><a class="thumb" href="#none" name="anchorBoxName_162">
-                        <span class="option"></span></a><span><a onclick="optionPreview(this,&#39;listmain-2&#39;,162,&#39;T&#39;)" "=""><img src="./sample3_files/icon_201710311441066800.png" id="btn_preview_listmain-2162" class="option_preview" alt="옵션 미리보기  "></a><span class="icon_txt">옵션보기</span></span>
-                        <span class="wish"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="162" categoryno="1" icon_status="off" login_status="F" individual-set="F"><span class="icon_txt">관심상품</span></span>
-                        <span class="cart"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(162,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"><span class="icon_txt">장바구니</span></span>
-                        <span class="zoom"><img src="./sample3_files/icon_201710311440593000.png" onclick="zoom(&#39;162&#39;, &#39;1&#39;, &#39;3&#39;,&#39;&#39;, &#39;&#39;);" style="cursor:pointer" alt="상품 큰 이미지 보기  "><span class="icon_txt">미리보기</span></span>
-                    </div>
-                    <span class="discount_rate rate60">57<span>%</span></span>
+<div id="map" style="width:500px;height:400px;"></div>
 
-            </div>
-            <span class="wish" style="display:none"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="162" categoryno="1" icon_status="off" login_status="F" individual-set="F"></span>
-            <span style="display:none"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(162,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"></span>
-            <div class="opt_set">
-                <p class="tit"><a href="#none"><span style="font-size:12px;color:#555555;">청담동 빌폴라리스</span></a><span class="tit_icon">  <img src="./sample3_files/icon_201709271323437200.gif" class="icon_img" alt="추천"> <img src="./sample3_files/icon_201709271323473400.gif" class="icon_img" alt="New">   </span></p>
-                <ul class="xans-element- xans-product xans-product-listitem-2 xans-product-listitem xans-product-2 opt"><li class=" xans-record-"><span style="font-size:12px;color:#a8a8a8;text-decoration:line-through;">~~~원</span></li>
-<li class=" xans-record-"><span style="font-size:12px;color:#242424;font-weight:bold;">~~~원</span><span id="span_product_tax_type_text" style=""> </span></li>
-<li class=" xans-record-"></li>
-</ul>
-</div>
-        </li>
-<li id="anchorBoxId_163" class="xans-record-">
-            <div class="thumbWrap">
-                <a class="thumb" href="#none" name="anchorBoxName_163">
-                    <img src="./sample3_files/img_main6.jpg" alt="SAMPLE PRODUCT">
-                    <img class="on" src="./sample3_files/img_main5.jpg" alt="SAMPLE PRODUCT"></a>
-                    <div class="iconBox"><a class="thumb" href="#none" name="anchorBoxName_163">
-                        <span class="option"></span></a><span><a onclick="optionPreview(this,&#39;listmain-2&#39;,163,&#39;T&#39;)" "=""><img src="./sample3_files/icon_201710311441066800.png" id="btn_preview_listmain-2163" class="option_preview" alt="옵션 미리보기  "></a><span class="icon_txt">옵션보기</span></span>
-                        <span class="wish"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="163" categoryno="1" icon_status="off" login_status="F" individual-set="F"><span class="icon_txt">관심상품</span></span>
-                        <span class="cart"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(163,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"><span class="icon_txt">장바구니</span></span>
-                        <span class="zoom"><img src="./sample3_files/icon_201710311440593000.png" onclick="zoom(&#39;163&#39;, &#39;1&#39;, &#39;3&#39;,&#39;&#39;, &#39;&#39;);" style="cursor:pointer" alt="상품 큰 이미지 보기  "><span class="icon_txt">미리보기</span></span>
-                    </div>
-                    <span class="discount_rate rate60">57<span>%</span></span>
+<script>
+var map = new naver.maps.Map('map', {
+    center: new naver.maps.LatLng(37.5167020, 127.0486290),
+    zoom: 11
+});
 
-            </div>
-            <span class="wish" style="display:none"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="163" categoryno="1" icon_status="off" login_status="F" individual-set="F"></span>
-            <span style="display:none"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(163,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"></span>
-            <div class="opt_set">
-                <p class="tit"><a href="#none"><span style="font-size:12px;color:#555555;">삼성동 라델하우스</span></a><span class="tit_icon">  <img src="./sample3_files/icon_201709271323437200.gif" class="icon_img" alt="추천"> <img src="./sample3_files/icon_201709271323473400.gif" class="icon_img" alt="New">   </span></p>
-                <ul class="xans-element- xans-product xans-product-listitem-2 xans-product-listitem xans-product-2 opt"><li class=" xans-record-"><span style="font-size:12px;color:#a8a8a8;text-decoration:line-through;">~~~원</span></li>
-<li class=" xans-record-"><span style="font-size:12px;color:#242424;font-weight:bold;">~~~원</span><span id="span_product_tax_type_text" style=""> </span></li>
-</ul>
-</div>
-        </li>
-<li id="anchorBoxId_164" class="xans-record-">
-            <div class="thumbWrap">
-                <a class="thumb" href="#none" name="anchorBoxName_164">
-                    <img src="./sample3_files/img_main7.jpg" alt="SAMPLE PRODUCT">
-                    <img class="on" src="./sample3_files/img_main8.jpg" alt="SAMPLE PRODUCT">                    </a><div class="iconBox"><a class="thumb" href="#none" name="anchorBoxName_164">
-                        <span class="option"></span></a><span><a onclick="optionPreview(this,&#39;listmain-2&#39;,164,&#39;T&#39;)" "=""><img src="./sample3_files/icon_201710311441066800.png" id="btn_preview_listmain-2164" class="option_preview" alt="옵션 미리보기  "></a><span class="icon_txt">옵션보기</span></span>
-                        <span class="wish"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="164" categoryno="1" icon_status="off" login_status="F" individual-set="F"><span class="icon_txt">관심상품</span></span>
-                        <span class="cart"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(164,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"><span class="icon_txt">장바구니</span></span>
-                        <span class="zoom"><img src="./sample3_files/icon_201710311440593000.png" onclick="zoom(&#39;164&#39;, &#39;1&#39;, &#39;3&#39;,&#39;&#39;, &#39;&#39;);" style="cursor:pointer" alt="상품 큰 이미지 보기  "><span class="icon_txt">미리보기</span></span>
-                    </div>
-                    <span class="discount_rate rate60">57<span>%</span></span>
 
-            </div>
-            <span class="wish" style="display:none"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="164" categoryno="1" icon_status="off" login_status="F" individual-set="F"></span>
-            <span style="display:none"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(164,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"></span>
-            <div class="opt_set">
-                <p class="tit"><a href="#none"><span style="font-size:12px;color:#555555;">청담동 마크힐스</span></a><span class="tit_icon">  <img src="./sample3_files/icon_201709271323437200.gif" class="icon_img" alt="추천"> <img src="./sample3_files/icon_201709271323473400.gif" class="icon_img" alt="New">   </span></p>
-                <ul class="xans-element- xans-product xans-product-listitem-2 xans-product-listitem xans-product-2 opt"><li class=" xans-record-"><span style="font-size:12px;color:#a8a8a8;text-decoration:line-through;">~~~원</span></li>
-<li class=" xans-record-"><span style="font-size:12px;color:#242424;font-weight:bold;">~~~원</span><span id="span_product_tax_type_text" style=""> </span></li>
-</ul>
-</div>
-        </li>
-<li id="anchorBoxId_165" class="xans-record-">
-            <div class="thumbWrap">
-                <a class="thumb" href="#none" name="anchorBoxName_165">
-                    <img src="./sample3_files/img_main8.jpg" alt="SAMPLE PRODUCT">
-                    <img class="on" src="./sample3_files/img_main7.jpg" alt="SAMPLE PRODUCT">                    </a><div class="iconBox"><a class="thumb" href="#none" name="anchorBoxName_165">
-                        <span class="option"></span></a><span><a onclick="optionPreview(this,&#39;listmain-2&#39;,165,&#39;T&#39;)" "=""><img src="./sample3_files/icon_201710311441066800.png" id="btn_preview_listmain-2165" class="option_preview" alt="옵션 미리보기  "></a><span class="icon_txt">옵션보기</span></span>
-                        <span class="wish"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="165" categoryno="1" icon_status="off" login_status="F" individual-set="F"><span class="icon_txt">관심상품</span></span>
-                        <span class="cart"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(165,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"><span class="icon_txt">장바구니</span></span>
-                        <span class="zoom"><img src="./sample3_files/icon_201710311440593000.png" onclick="zoom(&#39;165&#39;, &#39;1&#39;, &#39;3&#39;,&#39;&#39;, &#39;&#39;);" style="cursor:pointer" alt="상품 큰 이미지 보기  "><span class="icon_txt">미리보기</span></span>
-                    </div>
-                    <span class="discount_rate rate60">57<span>%</span></span>
+var marker = new naver.maps.Marker({
+    position: new naver.maps.LatLng(37.5167020, 127.0486290),
+    map: map
+});
 
-            </div>
-            <span class="wish" style="display:none"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="165" categoryno="1" icon_status="off" login_status="F" individual-set="F"></span>
-            <span style="display:none"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(165,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"></span>
-            <div class="opt_set">
-                <p class="tit"><a href="#none"><span style="font-size:12px;color:#555555;">청담동 상지리츠빌 4차</span></a><span class="tit_icon">  <img src="./sample3_files/icon_201709271323437200.gif" class="icon_img" alt="추천"> <img src="./sample3_files/icon_201709271323473400.gif" class="icon_img" alt="New">   </span></p>
-                <ul class="xans-element- xans-product xans-product-listitem-2 xans-product-listitem xans-product-2 opt"><li class=" xans-record-"><span style="font-size:12px;color:#a8a8a8;text-decoration:line-through;">000원</span></li>
-<li class=" xans-record-"><span style="font-size:12px;color:#242424;font-weight:bold;">000원</span><span id="span_product_tax_type_text" style=""> </span></li>
-</ul>
-</div>
-        </li>
+var map = new naver.maps.Map('map', mapOptions);
+</script>
+
+        </div>
+    </div>
+<!--// detailArea END -->
+</div> <br><br>
+<!--// 상단 제품 정보 END ---------------------------------------->
+
+
+
+<!-- detail_container (상세) -->
+<div class="xans-element- xans-product xans-product-additional detail_container "><!-- 상품상세정보 -->
+
+
+<div class="detail_section" id="detail0">
+        <ul class="detail_tab">
+<li class="on"><a href="javascript:;">매물정보</a></li>
+            <li class=""><a href="javascript:;">설명1</a></li>
+            <li class=""><a href="javascript:;">설명2</a></li>
+            <li class=""><a href="javascript:;">설명3</a></li>
         </ul>
-</div>
+<div class="cont">
 
+  <form name="fitem" method="post" action="#/lux/cartupdate.php" onsubmit="return fitem_submit(this);">
+  <input type="hidden" name="it_id[]" value="2201">
+  <input type="hidden" name="sw_direct">
+  <input type="hidden" name="url">
 
-<!-- 메인 탭 배너 -->
-<div class="main_tab_banner">
-    <ul class="tab">
-      <li class=""><a href="javascript:;">신규매물</a></li>
-    <li class="on"><a href="javascript:;">인기매물</a></li>
-    <li class=""><a href="javascript:;">추천매물</a></li>
-    <li class=""><a href="javascript:;" class="last"></a></li>
-</ul>
-<!-- 1번 탭 상품 -->
-<div class="tabView1" style="display: none;">
-	<div class="xans-element- xans-product xans-product-listmain-5 xans-product-listmain xans-product-5 prd_main2">
-    <!--
-			$count = 5
-			※ 노출시킬 상품의 갯수를 숫자로 설정할 수 있습니다.
-			※ 상품 노출갯수가 많으면 쇼핑몰에 부하가 발생할 수 있습니다.
-		-->
-<ul class="list_common list_type8 new_item">
-<li id="anchorBoxId_160" class="xans-record-">
-				<div class="inWrap">
-					<div class="thumb">
-						<a class="img" href="#none">
-              <img src="./sample3_files/img_main1.jpg" id="eListPrdImage160_6" alt="sample"></a>
-							<a href="file:///Users/munhohyeon/Desktop/sample3_files/sample_ex.htm" class="over">
-							<span class="txtWrap">
-								<span class="name"><span style="font-size:12px;color:#ffffff;">삼성동 상지카일룸</span></span>
-								<span class="xans-element- xans-product xans-product-listitem-5 xans-product-listitem xans-product-5 opt"><span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">[전세]</span></span>
-<span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">000원</span><span id="span_product_tax_type_text" style=""> </span></span></span>
-							</span>
-					</a>
-					</div>
-				</div>
-			</li>
-			<li id="anchorBoxId_161" class="xans-record-">
-				<div class="inWrap">
-					<div class="thumb">
-						<a class="img" href="#none">
-              <img src="./sample3_files/img_main2.jpg" id="eListPrdImage161_6" alt="SAMPLE"></a>
-							<a href="#none" class="over">
-								<span class="txtWrap">
-								<span class="name"><span style="font-size:12px;color:#ffffff;">한남동 클라인하우스</span></span>
-									<span class="xans-element- xans-product xans-product-listitem-5 xans-product-listitem xans-product-5 opt"><span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">[전세]</span></span>
-<span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">000원</span><span id="span_product_tax_type_text" style=""> </span></span></span>
-								</span>
-							</a>
-					</div>
-				</div>
-			</li>
-<li id="anchorBoxId_166" class="xans-record-">
-				<div class="inWrap">
-					<div class="thumb">
-						<a class="img" href="#none">
-              <img src="./sample3_files/img_main3.jpg" id="eListPrdImage166_6" alt="SAMPLE"></a>
-							<a href="#none" class="over">
-								<span class="txtWrap">
-								<span class="name"><span style="font-size:12px;color:#ffffff;">asdf</span></span>
-									<span class="xans-element- xans-product xans-product-listitem-5 xans-product-listitem xans-product-5 opt"><span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">[]</span></span>
-<span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">000원</span><span id="span_product_tax_type_text" style=""> </span></span></span>
-								</span>
-							</a>
-					</div>
-				</div>
-			</li>
-<li id="anchorBoxId_167" class="xans-record-">
-				<div class="inWrap">
-					<div class="thumb">
-						<a class="img" href="#none">
-              <img src="./sample3_files/img_main4.jpg" id="eListPrdImage167_6" alt="SAMPLE"></a>
-							<a href="#none" class="over">
-								<span class="txtWrap">
-								<span class="name"><span style="font-size:12px;color:#ffffff;">asdf</span></span>
-									<span class="xans-element- xans-product xans-product-listitem-5 xans-product-listitem xans-product-5 opt"><span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">[]</span></span>
-<span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">000원</span><span id="span_product_tax_type_text" style=""> </span></span></span>
-								</span>
-							</a>
-					</div>
-				</div>
-			</li>
-<li id="anchorBoxId_168" class="xans-record-">
-				<div class="inWrap">
-					<div class="thumb">
-						<a class="img" href="#">
-              <img src="./sample3_files/img_main5.jpg" id="eListPrdImage168_6" alt="SAMPLE"></a>
-							<a href="#none" class="over">
-								<span class="txtWrap">
-								<span class="name"><span style="font-size:12px;color:#ffffff;">asdf</span></span>
-									<span class="xans-element- xans-product xans-product-listitem-5 xans-product-listitem xans-product-5 opt"><span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">[]</span></span>
-<span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">000원</span><span id="span_product_tax_type_text" style=""> </span></span></span>
-								</span>
-							</a>
-					</div>
-				</div>
-			</li>
-		</ul>
-</div>
-</div>
+  <div class="tbl_frm02 tbl_wrap">
 
+    <table>
+      <tbody>
 
-<!-- 2번 탭 상품 -->
-<div class="tabView2" style="display: block;">
-	<div class="xans-element- xans-product xans-product-listmain-6 xans-product-listmain xans-product-6 prd_main2"><!--
-			$count = 5
-			※ 노출시킬 상품의 갯수를 숫자로 설정할 수 있습니다.
-			※ 상품 노출갯수가 많으면 쇼핑몰에 부하가 발생할 수 있습니다.
-		-->
-<ul class="list_common list_type8 new_item">
-<li id="anchorBoxId_163" class="xans-record-">
-				<div class="inWrap">
-					<div class="thumb">
-						<a class="img" href="#none">
-              <img src="./sample3_files/img_main6.jpg" id="eListPrdImage163_7" alt="SAMPLE"></a>
-							<a href="#none" class="over">
-							<span class="txtWrap">
-								<span class="name"><span style="font-size:12px;color:#ffffff;">asdf</span></span>
-								<span class="xans-element- xans-product xans-product-listitem-6 xans-product-listitem xans-product-6 opt"><span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">[]</span></span>
-<span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">000원</span><span id="span_product_tax_type_text" style=""> </span></span></span>
-							</span>
-					</a>
-					</div>
-				</div>
-			</li>
-			<li id="anchorBoxId_164" class="xans-record-">
-				<div class="inWrap">
-					<div class="thumb">
-						<a class="img" href="#none">
-              <img src="./sample3_files/img_main7.jpg" id="eListPrdImage164_7" alt="SAMPLE"></a>
-							<a href="#none/" class="over">
-								<span class="txtWrap">
-								<span class="name"><span style="font-size:12px;color:#ffffff;">aasdf</span></span>
-									<span class="xans-element- xans-product xans-product-listitem-6 xans-product-listitem xans-product-6 opt"><span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">[]</span></span>
-<span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">000원</span><span id="span_product_tax_type_text" style=""> </span></span></span>
-								</span>
-							</a>
-					</div>
-				</div>
-			</li>
-<li id="anchorBoxId_165" class="xans-record-">
-				<div class="inWrap">
-					<div class="thumb">
-						<a class="img" href="#none">
-              <img src="./sample3_files/img_main8.jpg" id="eListPrdImage165_7" alt="SAMPLE"></a>
-							<a href="#none" class="over">
-								<span class="txtWrap">
-								<span class="name"><span style="font-size:12px;color:#ffffff;">asdf</span></span>
-									<span class="xans-element- xans-product xans-product-listitem-6 xans-product-listitem xans-product-6 opt"><span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">[]</span></span>
-<span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">000원</span><span id="span_product_tax_type_text" style=""> </span></span></span>
-								</span>
-							</a>
-					</div>
-				</div>
-			</li>
-<li id="anchorBoxId_166" class="xans-record-">
-				<div class="inWrap">
-					<div class="thumb">
-						<a class="img" href="#none">
-              <img src="./sample3_files/img_main9.jpg" id="eListPrdImage166_7" alt="SAMPLE"></a>
-							<a href="#none" class="over">
-								<span class="txtWrap">
-								<span class="name"><span style="font-size:12px;color:#ffffff;">asdf</span></span>
-									<span class="xans-element- xans-product xans-product-listitem-6 xans-product-listitem xans-product-6 opt"><span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">[]</span></span>
-<span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">000원</span><span id="span_product_tax_type_text" style=""> </span></span></span>
-								</span>
-							</a>
-					</div>
-				</div>
-			</li>
-<li id="anchorBoxId_167" class="xans-record-">
-				<div class="inWrap">
-					<div class="thumb">
-						<a class="img" href="#none">
-              <img src="./sample3_files/img_main10.jpg" id="eListPrdImage167_7" alt="SAMPLE"></a>
-							<a href="#none" class="over">
-								<span class="txtWrap">
-								<span class="name"><span style="font-size:12px;color:#ffffff;">asdf</span></span>
-									<span class="xans-element- xans-product xans-product-listitem-6 xans-product-listitem xans-product-6 opt"><span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">[]</span></span>
-<span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">000원</span><span id="span_product_tax_type_text" style=""> </span></span></span>
-								</span>
-							</a>
-					</div>
-				</div>
-			</li>
-		</ul>
-</div>
-</div>
+      <tr>
+        <th>매물명</th>
+        <td>이름이름</td>
+        <th style="background:#ead7a4;">매물번호</th>
+        <td style="background:#f2e3bc;">001</td>
+      </tr>
+      <tr>
+        <th>거래형태</th>
+        <td>
+          렌트			</td>
+        <th>매물종류</th>
+        <td>
+          고급아파트			</td>
+      </tr>
+      <tr>
+        <th>매물타입</th>
+        <td colspan="3">
+          전망좋은집,&nbsp;&nbsp;&nbsp;대가족거주,&nbsp;&nbsp;&nbsp;		</td>
+      </tr>
+      <tr>
+        <th>분양면적</th>
+        <td>XX평/XXX㎡</td>
+        <th>전용면적</th>
+        <td>XX평/XXX㎡</td>
+      </tr>
+      <tr>
+        <th>준공연도</th>
+        <td>20XX.00</td>
+        <th>세대수</th>
+        <td>278세대</td>
+      </tr>
+      <tr>
+        <th>룸(R)</th>
+        <td>n</td>
+        <th>욕실(B)</th>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>총층</th>
+        <td>총 XX층</td>
+        <th>주차</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>관리비</th>
+        <td></td>
+        <th>리모델링</th>
+        <td></td>
+      </tr>
+      <tr>
+        <th>커뮤니티</th>
+        <td></td>
+        <th>지하철</th>
+        <td>서울역 도보 5분</td>
+      </tr>
+      <tr>
+        <th>위치</th>
+        <td colspan="3">서울역 인근</td>
+      </tr>
+      <tr>
+        <th>매매</th>
+        <td>
+                        </td>
+        <th>전세</th>
+        <td>
+                  <span class="price_number">90,000 </span>만원 (<span class="price_han">구억원</span>)			</td>
+      </tr>
+      <tr>
+        <th>월세</th>
+        <td>
+                        </td>
+        <th>렌트</th>
+        <td>
+                  <span class="price_number">370 </span>만원 (<span class="price_han">삼백칠십만원</span>)			</td>
+      </tr>
+      <tr>
+        <th>상세사항</th>
+        <td colspan="3"><div style="line-height:24px;" class="item_desc">
+          <p><span style="font-family: 나눔고딕, NanumGothic, sans-serif;">​설명</span>&nbsp;</p><p><span style="font-family: 나눔고딕, NanumGothic, sans-serif;">&nbsp;</span></p>
+          <p><span style="font-family: 나눔고딕, NanumGothic, sans-serif;">~~~~</span></p>
+          <p><span style="font-family: 나눔고딕, NanumGothic, sans-serif;">&nbsp;</span></p>
+          <p><span style="font-family: 나눔고딕, NanumGothic, sans-serif;"># !!!!</span></p>
+          <p><span style="font-family: 나눔고딕, NanumGothic, sans-serif;">&nbsp;</span></p>
+          <p><span style="font-family: 나눔고딕, NanumGothic, sans-serif;"># ------</span></p>
+          <p><span style="font-family: 나눔고딕, NanumGothic, sans-serif;">&nbsp;</span></p>
+          <p><span style="font-family: 나눔고딕, NanumGothic, sans-serif;">&nbsp;</span></p><p><span style="font-family: 나눔고딕, NanumGothic, sans-serif;">
+            <br style="clear:both;">&nbsp;</span></p></div></td>
+      </tr>
 
-<!-- 3번 탭 상품 -->
-<div class="tabView3" style="display: none;">
-	<div class="xans-element- xans-product xans-product-listmain-7 xans-product-listmain xans-product-7 prd_main2"><!--
-			$count = 5
-			※ 노출시킬 상품의 갯수를 숫자로 설정할 수 있습니다.
-			※ 상품 노출갯수가 많으면 쇼핑몰에 부하가 발생할 수 있습니다.
-		-->
-<ul class="list_common list_type8 new_item">
-<li id="anchorBoxId_160" class="xans-record-">
-				<div class="inWrap">
-					<div class="thumb">
-						<a class="img" href="#none">
-              <img src="./sample3_files/img_main11.jpg" id="eListPrdImage160_8" alt="SAMPLE PRODUCT"></a>
-							<a href="#none" class="over">
-							<span class="txtWrap">
-								<span class="name"><span style="font-size:12px;color:#ffffff;">qwer</span></span>
-								<span class="xans-element- xans-product xans-product-listitem-7 xans-product-listitem xans-product-7 opt"><span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">[]</span></span>
-<span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">000원</span><span id="span_product_tax_type_text" style=""> </span></span></span>
-							</span>
-					</a>
-					</div>
-				</div>
-			</li>
-			<li id="anchorBoxId_161" class="xans-record-">
-				<div class="inWrap">
-					<div class="thumb">
-						<a class="img" href="#none">
-              <img src="./sample3_files/img_main12.jpg" id="eListPrdImage161_8" alt="SAMPLE"></a>
-							<a href="#none" class="over">
-								<span class="txtWrap">
-								<span class="name"><span style="font-size:12px;color:#ffffff;">qwer</span></span>
-									<span class="xans-element- xans-product xans-product-listitem-7 xans-product-listitem xans-product-7 opt"><span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">[]</span></span>
-<span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">000원</span><span id="span_product_tax_type_text" style=""> </span></span></span>
-								</span>
-							</a>
-					</div>
-				</div>
-			</li>
-<li id="anchorBoxId_166" class="xans-record-">
-				<div class="inWrap">
-					<div class="thumb">
-						<a class="img" href="#none">
-              <img src="./sample3_files/img_main13.jpg" id="eListPrdImage166_8" alt="SAMPLE"></a>
-							<a href="#none" class="over">
-								<span class="txtWrap">
-								<span class="name"><span style="font-size:12px;color:#ffffff;">qwer</span></span>
-									<span class="xans-element- xans-product xans-product-listitem-7 xans-product-listitem xans-product-7 opt"><span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">[]</span></span>
-<span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">000원</span><span id="span_product_tax_type_text" style=""> </span></span></span>
-								</span>
-							</a>
-					</div>
-				</div>
-			</li>
-<li id="anchorBoxId_167" class="xans-record-">
-				<div class="inWrap">
-					<div class="thumb">
-						<a class="img" href="#none">
-              <img src="./sample3_files/img_main14.jpg" id="eListPrdImage167_8" alt="SAMPLE"></a>
-							<a href="#none" class="over">
-								<span class="txtWrap">
-								<span class="name"><span style="font-size:12px;color:#ffffff;">qwer</span></span>
-									<span class="xans-element- xans-product xans-product-listitem-7 xans-product-listitem xans-product-7 opt"><span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">[]</span></span>
-<span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">000원</span><span id="span_product_tax_type_text" style=""> </span></span></span>
-								</span>
-							</a>
-					</div>
-				</div>
-			</li>
-<li id="anchorBoxId_168" class="xans-record-">
-				<div class="inWrap">
-					<div class="thumb">
-						<a class="img" href="#none">
-              <img src="./sample3_files/img_main15.jpg" id="eListPrdImage168_8" alt="SAMPLE"></a>
-							<a href="#none" class="over">
-								<span class="txtWrap">
-								<span class="name"><span style="font-size:12px;color:#ffffff;">qwer</span></span>
-									<span class="xans-element- xans-product xans-product-listitem-7 xans-product-listitem xans-product-7 opt"><span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">[]</span></span>
-<span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">000원</span><span id="span_product_tax_type_text" style=""> </span></span></span>
-								</span>
-							</a>
-					</div>
-				</div>
-			</li>
-		</ul>
-</div>
-</div>
+      </tbody>
+    </table>
 
-<!-- 4번 탭 상품 -->
-<div class="tabView4" style="display: none;">
-	<div class="xans-element- xans-product xans-product-listmain-8 xans-product-listmain xans-product-8 prd_main2"><!--
-			$count = 5
-			※ 노출시킬 상품의 갯수를 숫자로 설정할 수 있습니다.
-			※ 상품 노출갯수가 많으면 쇼핑몰에 부하가 발생할 수 있습니다.
-		-->
-<ul class="list_common list_type8 new_item">
-<li id="anchorBoxId_163" class="xans-record-">
-				<!-- <div class="inWrap">
-					<div class="thumb">
-						<a class="img" href="#none">
-              <img src="./sample3_files/006.jpg" id="eListPrdImage163_9" alt="SAMPLE PRODUCT"></a>
-							<a href="#none" class="over">
-							<span class="txtWrap">
-								<span class="name"><span style="font-size:12px;color:#ffffff;">SAMPLE PRODUCT</span></span>
-								<span class="xans-element- xans-product xans-product-listitem-8 xans-product-listitem xans-product-8 opt"><span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">꼼꼼하게 정확하게 작업되었습니다</span></span>
-<span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">13,000원</span><span id="span_product_tax_type_text" style=""> </span></span></span>
-							</span>
-					</a>
-					</div>
-				</div>
-			</li>
-			<li id="anchorBoxId_164" class="xans-record-">
-				<div class="inWrap">
-					<div class="thumb">
-						<a class="img" href="#none"><img src="./sample3_files/007.jpg" id="eListPrdImage164_9" alt="SAMPLE PRODUCT"></a>
-							<a href="#none" class="over">
-								<span class="txtWrap">
-								<span class="name"><span style="font-size:12px;color:#ffffff;">SAMPLE PRODUCT</span></span>
-									<span class="xans-element- xans-product xans-product-listitem-8 xans-product-listitem xans-product-8 opt"><span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">꼼꼼하게 정확하게 작업되었습니다</span></span>
-<span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">13,000원</span><span id="span_product_tax_type_text" style=""> </span></span></span>
-								</span>
-							</a>
-					</div>
-				</div>
-			</li>
-<li id="anchorBoxId_165" class="xans-record-">
-				<div class="inWrap">
-					<div class="thumb">
-						<a class="img" href="#none"><img src="./sample3_files/008.jpg" id="eListPrdImage165_9" alt="SAMPLE PRODUCT"></a>
-							<a href="#none" class="over">
-								<span class="txtWrap">
-								<span class="name"><span style="font-size:12px;color:#ffffff;">SAMPLE PRODUCT</span></span>
-									<span class="xans-element- xans-product xans-product-listitem-8 xans-product-listitem xans-product-8 opt"><span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">꼼꼼하게 정확하게 작업되었습니다</span></span>
-<span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">13,000원</span><span id="span_product_tax_type_text" style=""> </span></span></span>
-								</span>
-							</a>
-					</div>
-				</div>
-			</li>
-<li id="anchorBoxId_166" class="xans-record-">
-				<div class="inWrap">
-					<div class="thumb">
-						<a class="img" href="#none"><img src="./sample3_files/009.jpg" id="eListPrdImage166_9" alt="SAMPLE PRODUCT"></a>
-							<a href="#none" class="over">
-								<span class="txtWrap">
-								<span class="name"><span style="font-size:12px;color:#ffffff;">SAMPLE PRODUCT</span></span>
-									<span class="xans-element- xans-product xans-product-listitem-8 xans-product-listitem xans-product-8 opt"><span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">꼼꼼하게 정확하게 작업되었습니다</span></span>
-<span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">13,000원</span><span id="span_product_tax_type_text" style=""> </span></span></span>
-								</span>
-							</a>
-					</div>
-				</div>
-			</li>
-<li id="anchorBoxId_167" class="xans-record-">
-				<div class="inWrap">
-					<div class="thumb">
-						<a class="img" href="#none"><img src="./sample3_files/010.jpg" id="eListPrdImage167_9" alt="SAMPLE PRODUCT"></a>
-							<a href="#none/" class="over">
-								<span class="txtWrap">
-								<span class="name"><span style="font-size:12px;color:#ffffff;">SAMPLE PRODUCT</span></span>
-									<span class="xans-element- xans-product xans-product-listitem-8 xans-product-listitem xans-product-8 opt"><span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">꼼꼼하게 정확하게 작업되었습니다</span></span>
-<span class="opt_txt  xans-record-"><span style="font-size:12px;color:#ffffff;">13,000원</span><span id="span_product_tax_type_text" style=""> </span></span></span>
-								</span>
-							</a>
-					</div>
-				</div>
-			</li>
-		</ul> -->
-</div>
-</div>
-
-</div>
-
-
-
-<div class="main_sub_visual swiper-container swiper-container-horizontal" style="width:1200px;margin:0 auto 108px">
-  <div class="xans-element- xans-bannermanage2 xans-bannermanage2-display-3 xans-bannermanage2-display xans-bannermanage2-3 swiper-wrapper" style="transform: translate3d(-2460px, 0px, 0px); transition-duration: 0ms;">
-
-    <div class="swiper-slide xans-record- swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="1" style="width: 1200px; margin-right: 30px;">
-      <a href="#none" alt="배너"><img class="banner_image" width="1200" height="330" title="배너" alt="배너" rel="8-3" src="./sample3_files/sample_img.jpg">
-      </a>
-    </div>
-
-    <div class="swiper-slide xans-record- swiper-slide-prev swiper-slide-duplicate-next" data-swiper-slide-index="0" style="width: 1200px; margin-right: 30px;">
-      <a href="#none" alt="배너"><img class="banner_image" width="1200" height="330" title="배너" alt="배너" rel="7-3" src="./sample3_files/sample_img2.jpg">
-      </a>
-    </div>
-
-    <div class="swiper-slide xans-record- swiper-slide-active" data-swiper-slide-index="1" style="width: 1200px; margin-right: 30px;">
-      <a href="#none" alt="배너"><img class="banner_image" width="1200" height="330" title="배너" alt="배너" rel="8-3" src="./sample3_files/sample_img.jpg">
-      </a>
-    </div>
-
-    <div class="swiper-slide xans-record- swiper-slide-duplicate swiper-slide-next swiper-slide-duplicate-prev" data-swiper-slide-index="0" style="width: 1200px; margin-right: 30px;">
-      <a href="#none" alt="배너"><img class="banner_image" width="1200" height="330" title="배너" alt="배너" rel="7-3" src="./sample3_files/sample_img2.jpg">
-      </a>
-    </div>
   </div>
 
-  <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
-    <span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+  <div style="text-align:center; padding:10px 0px;">
+    <a href="javascript:;" onclick="history.back(-1);"><img src="./ㅁㄴㄹㅇ_files/bt_item_go_2.png" border="0"></a>&nbsp;&nbsp;
   </div>
-    <!--
-    <div class="swiper-button-next sub"></div>
-    <div class="swiper-button-prev sub"></div>
-    -->
-</div>
-<!--// swiper-container END -->
 
 
+  </form>
 
-<!-- 메인진열 3번 -->
-<div id="quick3" class="xans-element- xans-product xans-product-listmain-3 xans-product-listmain xans-product-3 prd_main">
-  <!--
-        $count = 8
-            ※ 노출시킬 상품의 갯수를 숫자로 설정할 수 있으며, 설정하지 않을경우, 최대 200개로 자동제한됩니다.
-            ※ 상품 노출갯수가 많으면 쇼핑몰에 부하가 발생할 수 있습니다.
-    -->
-<h2 class="tit_common">
-  <span>제목이나 타이틀2</span>
-</h2>
-<ul class="list_common list_type4 new_item">
 
-  <li id="anchorBoxId_158" class="xans-record-">
-    <div class="thumbWrap">
-      <a class="thumb" href="#none" name="anchorBoxName_158">
-        <img src="./sample3_files/img_main9.jpg" alt="SAMPLE">
-        <img class="on" src="./sample3_files/img_main10.jpg" alt="SAMPLE">
-      </a>
-      <div class="iconBox">
-        <a class="thumb" href="#none"><span class="option"></span></a><span><a onclick="optionPreview(this,&#39;listmain-2&#39;,158,&#39;T&#39;)" "=""><img src="./sample3_files/icon_201710311441066800.png" id="btn_preview_listmain-2158" class="option_preview" alt="옵션 미리보기  "></a><span class="icon_txt">옵션보기</span></span>
-                      <span class="wish"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="158" categoryno="1" icon_status="off" login_status="F" individual-set="F"><span class="icon_txt">관심상품</span></span>
-                      <span class="cart"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(158,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"><span class="icon_txt">장바구니</span></span>
-                      <span class="zoom"><img src="./sample3_files/icon_201710311440593000.png" onclick="zoom(&#39;158&#39;, &#39;1&#39;, &#39;3&#39;,&#39;&#39;, &#39;&#39;);" style="cursor:pointer" alt="상품 큰 이미지 보기  "><span class="icon_txt">미리보기</span></span>
-                  </div>
-                  <span class="discount_rate rate30">25<span>%</span></span>
+<br><br><br>
 
-          </div>
-          <span class="wish" style="display:none">
-            <img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="158" categoryno="1" icon_status="off" login_status="F" individual-set="F"></span>
-          <span style="display:none">
-            <img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(158,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"></span>
-
-          <div class="opt_set">
-              <p class="tit">
-                <a href="#none">
-                  <span style="font-size:14px;color:#555555;">청담동 대우로얄카운티 5차</span>
-                </a>
-                <span class="tit_icon">
-                  <img src="./sample3_files/icon_201709271323437200.gif" class="icon_img" alt="추천">
-                  <img src="./sample3_files/icon_201709271323473400.gif" class="icon_img" alt="New">
-                </span>
-              </p>
-
-              <ul class="xans-element- xans-product xans-product-listitem-2 xans-product-listitem xans-product-2 opt">
-                <li class=" xans-record-">
-                  <span style="font-size:12px;color:#a8a8a8;text-decoration:line-through;">~~~원</span>
-                </li>
-                <li class=" xans-record-">
-                  <span style="font-size:12px;color:#242424;font-weight:bold;">~~~원</span>
-                  <span id="span_product_tax_type_text" style=""> </span>
-                </li>
-              </ul>
-            </div>
-
-
-      <li id="anchorBoxId_159" class="xans-record-">
-          <div class="thumbWrap">
-              <a class="thumb" href="#none" name="anchorBoxName_159">
-                  <img src="./sample3_files/img_main10.jpg" alt="SAMPLE PRODUCT">
-                  <img class="on" src="./sample3_files/img_main9.jpg" alt="SAMPLE PRODUCT">
-                </a>
-                <div class="iconBox">
-                  <a class="thumb" href="#none" name="anchorBoxName_159">
-                      <span class="option"></span>
-                    </a>
-                    <span>
-                      <a onclick="optionPreview(this,&#39;listmain-2&#39;,159,&#39;T&#39;)" "="">
-                        <img src="./sample3_files/icon_201710311441066800.png" id="btn_preview_listmain-2159" class="option_preview" alt="옵션 미리보기  ">
-                      </a>
-                        <span class="icon_txt">옵션보기</span>
-                      </span>
-                      <span class="wish"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="159" categoryno="1" icon_status="off" login_status="F" individual-set="F">
-                        <span class="icon_txt">관심상품</span>
-                      </span>
-                      <span class="cart"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(159,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart">
-                        <span class="icon_txt">장바구니</span>
-                      </span>
-                      <span class="zoom"><img src="./sample3_files/icon_201710311440593000.png" onclick="zoom(&#39;159&#39;, &#39;1&#39;, &#39;3&#39;,&#39;&#39;, &#39;&#39;);" style="cursor:pointer" alt="상품 큰 이미지 보기  "><span class="icon_txt">미리보기</span></span>
-                  </div>
-
-                  <span class="discount_rate rate40">33
-                    <span>%</span>
-                  </span>
-          </div>
-
-          <span class="wish" style="display:none"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="159" categoryno="1" icon_status="off" login_status="F" individual-set="F"></span>
-          <span style="display:none"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(159,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"></span>
-          <div class="opt_set">
-              <p class="tit"><a href="#none/"><span style="font-size:12px;color:#555555;">잠원동 상지리츠카일룸</span></a><span class="tit_icon">  <img src="./sample3_files/icon_201709271323437200.gif" class="icon_img" alt="추천"> <img src="./sample3_files/icon_201709271323473400.gif" class="icon_img" alt="New">   </span></p>
-              <ul class="xans-element- xans-product xans-product-listitem-2 xans-product-listitem xans-product-2 opt"><li class=" xans-record-"><span style="font-size:12px;color:#a8a8a8;text-decoration:line-through;">~~~원</span></li>
-<li class=" xans-record-"><span style="font-size:12px;color:#242424;font-weight:bold;">~~~원</span><span id="span_product_tax_type_text" style=""> </span></li>
-<li class=" xans-record-">
-</li>
-</ul>
-</div>
-      </li>
-<li id="anchorBoxId_160" class="xans-record-">
-          <div class="thumbWrap">
-              <a class="thumb" href="#none" name="anchorBoxName_160">
-                  <img src="./sample3_files/img_main11.jpg" alt="SAMPLE PRODUCT">
-                  <img class="on" src="./sample3_files/img_main12.jpg" alt="SAMPLE PRODUCT" style="opacity: 0;">                    </a><div class="iconBox"><a class="thumb" href="#none" name="anchorBoxName_160">
-                      <span class="option"></span></a><span><a onclick="optionPreview(this,&#39;listmain-2&#39;,160,&#39;T&#39;)" "=""><img src="./sample3_files/icon_201710311441066800.png" id="btn_preview_listmain-2160" class="option_preview" alt="옵션 미리보기  "></a><span class="icon_txt">옵션보기</span></span>
-                      <span class="wish"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="160" categoryno="1" icon_status="off" login_status="F" individual-set="F"><span class="icon_txt">관심상품</span></span>
-                      <span class="cart"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(160,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"><span class="icon_txt">장바구니</span></span>
-                      <span class="zoom"><img src="./sample3_files/icon_201710311440593000.png" onclick="zoom(&#39;160&#39;, &#39;1&#39;, &#39;3&#39;,&#39;&#39;, &#39;&#39;);" style="cursor:pointer" alt="상품 큰 이미지 보기  "><span class="icon_txt">미리보기</span></span>
-                  </div>
-                  <span class="discount_rate rate60">57<span>%</span></span>
-
-          </div>
-          <span class="wish" style="display:none"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="160" categoryno="1" icon_status="off" login_status="F" individual-set="F"></span>
-          <span style="display:none"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(160,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"></span>
-          <div class="opt_set">
-              <p class="tit"><a href="#none"><span style="font-size:12px;color:#555555;">논현동 알파임하우스 2차</span></a><span class="tit_icon">  <img src="./sample3_files/icon_201709271323437200.gif" class="icon_img" alt="추천"> <img src="./sample3_files/icon_201709271323473400.gif" class="icon_img" alt="New">   </span></p>
-              <ul class="xans-element- xans-product xans-product-listitem-2 xans-product-listitem xans-product-2 opt"><li class=" xans-record-"><span style="font-size:12px;color:#a8a8a8;text-decoration:line-through;">~~~원</span></li>
-<li class=" xans-record-"><span style="font-size:12px;color:#242424;font-weight:bold;">~~~원</span><span id="span_product_tax_type_text" style=""> </span></li>
-</ul>
-</div>
-      </li>
-
-<li id="anchorBoxId_161" class="xans-record-">
-          <div class="thumbWrap">
-              <a class="thumb" href="#none" name="anchorBoxName_161">
-                  <img src="./sample3_files/img_main12.jpg" alt="SAMPLE PRODUCT">
-                  <img class="on" src="./sample3_files/img_main11.jpg" alt="SAMPLE" style="opacity: 0;"></a><div class="iconBox"><a class="thumb" href="#none" name="anchorBoxName_161">
-                      <span class="option"></span></a><span><a onclick="optionPreview(this,&#39;listmain-2&#39;,161,&#39;T&#39;)" "=""><img src="./sample3_files/icon_201710311441066800.png" id="btn_preview_listmain-2161" class="option_preview" alt="옵션 미리보기  "></a><span class="icon_txt">옵션보기</span></span>
-                      <span class="wish"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="161" categoryno="1" icon_status="off" login_status="F" individual-set="F"><span class="icon_txt">관심상품</span></span>
-                      <span class="cart"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(161,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"><span class="icon_txt">장바구니</span></span>
-                      <span class="zoom"><img src="./sample3_files/icon_201710311440593000.png" onclick="zoom(&#39;161&#39;, &#39;1&#39;, &#39;3&#39;,&#39;&#39;, &#39;&#39;);" style="cursor:pointer" alt="상품 큰 이미지 보기  "><span class="icon_txt">미리보기</span></span>
-                  </div>
-                  <span class="discount_rate rate60">57<span>%</span></span>
-
-          </div>
-          <span class="wish" style="display:none"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="161" categoryno="1" icon_status="off" login_status="F" individual-set="F"></span>
-          <span style="display:none"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(161,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"></span>
-          <div class="opt_set">
-              <p class="tit"><a href="#none"><span style="font-size:12px;color:#555555;">논현동 아펠바움 1차</span></a><span class="tit_icon">  <img src="./sample3_files/icon_201709271323437200.gif" class="icon_img" alt="추천"> <img src="./sample3_files/icon_201709271323473400.gif" class="icon_img" alt="New">   </span></p>
-              <ul class="xans-element- xans-product xans-product-listitem-2 xans-product-listitem xans-product-2 opt"><li class=" xans-record-"><span style="font-size:12px;color:#a8a8a8;text-decoration:line-through;">~~~원</span></li>
-<li class=" xans-record-"><span style="font-size:12px;color:#242424;font-weight:bold;">~~~원</span><span id="span_product_tax_type_text" style=""> </span></li>
-</ul>
-</div>
-      </li>
-
-<li id="anchorBoxId_162" class="xans-record-">
-          <div class="thumbWrap">
-              <a class="thumb" href="#none" name="anchorBoxName_162">
-                  <img src="./sample3_files/img_main13.jpg" alt="SAMPLE">
-                  <img class="on" src="./sample3_files/img_main14.jpg" alt="SAMPLE PRODUCT">                    </a><div class="iconBox"><a class="thumb" href="#none" name="anchorBoxName_162">
-                      <span class="option"></span></a><span><a onclick="optionPreview(this,&#39;listmain-2&#39;,162,&#39;T&#39;)" "=""><img src="./sample3_files/icon_201710311441066800.png" id="btn_preview_listmain-2162" class="option_preview" alt="옵션 미리보기  "></a><span class="icon_txt">옵션보기</span></span>
-                      <span class="wish"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="162" categoryno="1" icon_status="off" login_status="F" individual-set="F"><span class="icon_txt">관심상품</span></span>
-                      <span class="cart"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(162,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"><span class="icon_txt">장바구니</span></span>
-                      <span class="zoom"><img src="./sample3_files/icon_201710311440593000.png" onclick="zoom(&#39;162&#39;, &#39;1&#39;, &#39;3&#39;,&#39;&#39;, &#39;&#39;);" style="cursor:pointer" alt="상품 큰 이미지 보기  "><span class="icon_txt">미리보기</span></span>
-                  </div>
-                  <span class="discount_rate rate60">57<span>%</span></span>
-
-          </div>
-          <span class="wish" style="display:none"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="162" categoryno="1" icon_status="off" login_status="F" individual-set="F"></span>
-          <span style="display:none"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(162,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"></span>
-          <div class="opt_set">
-              <p class="tit"><a href="#none"><span style="font-size:12px;color:#555555;">삼성동 상지카일룸</span></a><span class="tit_icon">  <img src="./sample3_files/icon_201709271323437200.gif" class="icon_img" alt="추천"> <img src="./sample3_files/icon_201709271323473400.gif" class="icon_img" alt="New">   </span></p>
-              <ul class="xans-element- xans-product xans-product-listitem-2 xans-product-listitem xans-product-2 opt"><li class=" xans-record-"><span style="font-size:12px;color:#a8a8a8;text-decoration:line-through;">~~~원</span></li>
-<li class=" xans-record-"><span style="font-size:12px;color:#242424;font-weight:bold;">~~~원</span><span id="span_product_tax_type_text" style=""> </span></li>
-<li class=" xans-record-"></li>
-</ul>
-</div>
-      </li>
-<li id="anchorBoxId_163" class="xans-record-">
-          <div class="thumbWrap">
-              <a class="thumb" href="#none" name="anchorBoxName_163">
-                  <img src="./sample3_files/img_main14.jpg" alt="SAMPLE PRODUCT">
-                  <img class="on" src="./sample3_files/img_main13.jpg" alt="SAMPLE PRODUCT">                    </a><div class="iconBox"><a class="thumb" href="#none" name="anchorBoxName_163">
-                      <span class="option"></span></a><span><a onclick="optionPreview(this,&#39;listmain-2&#39;,163,&#39;T&#39;)" "=""><img src="./sample3_files/icon_201710311441066800.png" id="btn_preview_listmain-2163" class="option_preview" alt="옵션 미리보기  "></a><span class="icon_txt">옵션보기</span></span>
-                      <span class="wish"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="163" categoryno="1" icon_status="off" login_status="F" individual-set="F"><span class="icon_txt">관심상품</span></span>
-                      <span class="cart"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(163,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"><span class="icon_txt">장바구니</span></span>
-                      <span class="zoom"><img src="./sample3_files/icon_201710311440593000.png" onclick="zoom(&#39;163&#39;, &#39;1&#39;, &#39;3&#39;,&#39;&#39;, &#39;&#39;);" style="cursor:pointer" alt="상품 큰 이미지 보기  "><span class="icon_txt">미리보기</span></span>
-                  </div>
-                  <span class="discount_rate rate60">57<span>%</span></span>
-
-          </div>
-          <span class="wish" style="display:none"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="163" categoryno="1" icon_status="off" login_status="F" individual-set="F"></span>
-          <span style="display:none"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(163,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"></span>
-          <div class="opt_set">
-              <p class="tit"><a href="#none"><span style="font-size:12px;color:#555555;">삼성동 신동아듀크빌</span></a><span class="tit_icon">  <img src="./sample3_files/icon_201709271323437200.gif" class="icon_img" alt="추천"> <img src="./sample3_files/icon_201709271323473400.gif" class="icon_img" alt="New">   </span></p>
-              <ul class="xans-element- xans-product xans-product-listitem-2 xans-product-listitem xans-product-2 opt"><li class=" xans-record-"><span style="font-size:12px;color:#a8a8a8;text-decoration:line-through;">~~~원</span></li>
-<li class=" xans-record-"><span style="font-size:12px;color:#242424;font-weight:bold;">~~~원</span><span id="span_product_tax_type_text" style=""> </span></li>
-</ul>
-</div>
-      </li>
-<li id="anchorBoxId_164" class="xans-record-">
-          <div class="thumbWrap">
-              <a class="thumb" href="#none" name="anchorBoxName_164">
-                  <img src="./sample3_files/img_main15.jpg" alt="SAMPLE PRODUCT">
-                  <img class="on" src="./sample3_files/img_main16.jpg" alt="SAMPLE PRODUCT">                    </a><div class="iconBox"><a class="thumb" href="#none" name="anchorBoxName_164">
-                      <span class="option"></span></a><span><a onclick="optionPreview(this,&#39;listmain-2&#39;,164,&#39;T&#39;)" "=""><img src="./sample3_files/icon_201710311441066800.png" id="btn_preview_listmain-2164" class="option_preview" alt="옵션 미리보기  "></a><span class="icon_txt">옵션보기</span></span>
-                      <span class="wish"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="164" categoryno="1" icon_status="off" login_status="F" individual-set="F"><span class="icon_txt">관심상품</span></span>
-                      <span class="cart"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(164,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"><span class="icon_txt">장바구니</span></span>
-                      <span class="zoom"><img src="./sample3_files/icon_201710311440593000.png" onclick="zoom(&#39;164&#39;, &#39;1&#39;, &#39;3&#39;,&#39;&#39;, &#39;&#39;);" style="cursor:pointer" alt="상품 큰 이미지 보기  "><span class="icon_txt">미리보기</span></span>
-                  </div>
-                  <span class="discount_rate rate60">57<span>%</span></span>
-
-          </div>
-          <span class="wish" style="display:none"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="164" categoryno="1" icon_status="off" login_status="F" individual-set="F"></span>
-          <span style="display:none"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(164,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"></span>
-          <div class="opt_set">
-              <p class="tit"><a href="#none"><span style="font-size:12px;color:#555555;">청담동 상지리츠빌 8차</span></a><span class="tit_icon">  <img src="./sample3_files/icon_201709271323437200.gif" class="icon_img" alt="추천"> <img src="./sample3_files/icon_201709271323473400.gif" class="icon_img" alt="New">   </span></p>
-              <ul class="xans-element- xans-product xans-product-listitem-2 xans-product-listitem xans-product-2 opt"><li class=" xans-record-"><span style="font-size:12px;color:#a8a8a8;text-decoration:line-through;">~~~원</span></li>
-<li class=" xans-record-"><span style="font-size:12px;color:#242424;font-weight:bold;">~~~원</span><span id="span_product_tax_type_text" style=""> </span></li>
-</ul>
-</div>
-      </li>
-<li id="anchorBoxId_165" class="xans-record-">
-          <div class="thumbWrap">
-              <a class="thumb" href="#none" name="anchorBoxName_165">
-                  <img src="./sample3_files/img_main16.jpg" alt="SAMPLE PRODUCT">
-                  <img class="on" src="./sample3_files/img_main15.jpg" alt="SAMPLE PRODUCT">                    </a><div class="iconBox"><a class="thumb" href="#none" name="anchorBoxName_165">
-                      <span class="option"></span></a><span><a onclick="optionPreview(this,&#39;listmain-2&#39;,165,&#39;T&#39;)" "=""><img src="./sample3_files/icon_201710311441066800.png" id="btn_preview_listmain-2165" class="option_preview" alt="옵션 미리보기  "></a><span class="icon_txt">옵션보기</span></span>
-                      <span class="wish"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="165" categoryno="1" icon_status="off" login_status="F" individual-set="F"><span class="icon_txt">관심상품</span></span>
-                      <span class="cart"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(165,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"><span class="icon_txt">장바구니</span></span>
-                      <span class="zoom"><img src="./sample3_files/icon_201710311440593000.png" onclick="zoom(&#39;165&#39;, &#39;1&#39;, &#39;3&#39;,&#39;&#39;, &#39;&#39;);" style="cursor:pointer" alt="상품 큰 이미지 보기  "><span class="icon_txt">미리보기</span></span>
-                  </div>
-                  <span class="discount_rate rate60">57<span>%</span></span>
-
-          </div>
-          <span class="wish" style="display:none"><img src="./sample3_files/icon_201710311441107600.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="165" categoryno="1" icon_status="off" login_status="F" individual-set="F"></span>
-          <span style="display:none"><img src="./sample3_files/icon_201710311441035600.png" onclick="CAPP_SHOP_NEW_PRODUCT_OPTIONSELECT.selectOptionCommon(165,  1, &#39;basket&#39;, &#39;&#39;)" alt="장바구니 담기" class="ec-admin-icon cart"></span>
-          <div class="opt_set">
-              <p class="tit"><a href="#none"><span style="font-size:12px;color:#555555;">청담동 헤렌하우스</span></a><span class="tit_icon">  <img src="./sample3_files/icon_201709271323437200.gif" class="icon_img" alt="추천"> <img src="./sample3_files/icon_201709271323473400.gif" class="icon_img" alt="New">   </span></p>
-              <ul class="xans-element- xans-product xans-product-listitem-2 xans-product-listitem xans-product-2 opt"><li class=" xans-record-"><span style="font-size:12px;color:#a8a8a8;text-decoration:line-through;">000원</span></li>
-<li class=" xans-record-"><span style="font-size:12px;color:#242424;font-weight:bold;">000원</span><span id="span_product_tax_type_text" style=""> </span></li>
-</ul>
-</div>
-      </li>
-      </ul>
-</div>
-
-
-
-<!-- 메인 진열 4번 -->
-<div class="slide_auto" style="height: 280px;">
-    <div id="quick4" class="xans-element- xans-product xans-product-listmain-4 xans-product-listmain xans-product-4 slide_wrap">
-      <!--
-            $count = 20
-                ※ 노출시킬 상품의 갯수를 숫자로 설정할 수 있으며, 설정하지 않을경우, 최대 200개로 자동제한됩니다.
-                ※ 상품 노출갯수가 많으면 쇼핑몰에 부하가 발생할 수 있습니다.
-            $basket_result = /product/add_basket.html
-            $basket_option = /product/basket_option.html
-        -->
-        <h2 class="tit_common">
-          <span>슬라이드</span>
-        </h2>
-          <div class="viewPortWrap" style="left: 0.0px;">
-
-        <ul class="viewPort" style="width: 3872px; height: 280px;">
-          <li id="anchorBoxId_158" class="xans-record-">
-            <span class="thumb">
-              <img src="./sample3_files/img_main1.jpg" id="eListPrdImage158_5" alt="SAMPLE">&nbsp;
-              <a class="over" href="#none" name="anchorBoxName_158">
-                <p class="txtWrap">
-                  <span class="name">
-                    <span style="font-size:12px;color:#ffffff;">SAMPLE</span>
-                  </span>
-
-                  <span class="xans-element- xans-product xans-product-listitem-4 xans-product-listitem xans-product-4 opt">
-
-                    <span class="xans-record-">
-                      <b class="displaynone">
-                        <span style="font-size:12px;color:#ffffff;">상품간략설명</span> :
-                      </b>
-                      <span style="font-size:12px;color:#ffffff;">이곳에 설명이 노출됩니다.</span>
-                    </span>
-
-                    <span class="xans-record-">
-                      <b class="displaynone">
-                        <span style="font-size:12px;color:#ffffff;font-weight:bold;">판매가</span> :
-                      </b>
-                      <span style="font-size:12px;color:#ffffff;font-weight:bold;">원</span>
-                      <span id="span_product_tax_type_text" style=""> </span>
-                    </span>
-
-                  </span>
-                </p>
-              </a>
-            </span>
-          </li>
-
-          <li id="anchorBoxId_159" class="xans-record-">
-            <span class="thumb">
-              <img src="./sample3_files/img_main2.jpg" id="eListPrdImage159_5" alt="SAMPLE PRODUCT">&nbsp;
-              <a class="over" href="#none" name="anchorBoxName_159">
-                <p class="txtWrap">
-                  <span class="name">
-                    <span style="font-size:12px;color:#ffffff;">SAMPLE</span>
-                  </span>
-
-                  <span class="xans-element- xans-product xans-product-listitem-4 xans-product-listitem xans-product-4 opt">
-
-                    <span class="xans-record-">
-                      <b class="displaynone">
-                        <span style="font-size:12px;color:#ffffff;">상품간략설명</span> :
-                      </b>
-                      <span style="font-size:12px;color:#ffffff;">이곳에 설명이 노출됩니다.</span>
-                    </span>
-
-                    <span class="xans-record-">
-                      <b class="displaynone">
-                        <span style="font-size:12px;color:#ffffff;font-weight:bold;">판매가</span> :
-                      </b>
-                      <span style="font-size:12px;color:#ffffff;font-weight:bold;">원</span>
-                      <span id="span_product_tax_type_text" style=""> </span>
-                    </span>
-
-                  </span>
-                </p>
-              </a>
-            </span>
-          </li>
-
-          <li id="anchorBoxId_160" class="xans-record-">
-            <span class="thumb">
-              <img src="./sample3_files/img_main3.jpg" id="eListPrdImage160_5" alt="SAMPLE PRODUCT">&nbsp;
-              <a class="over" href="#none" name="anchorBoxName_160">
-                <p class="txtWrap">
-                  <span class="name">
-                    <span style="font-size:12px;color:#ffffff;">SAMPLE</span>
-                  </span>
-
-                  <span class="xans-element- xans-product xans-product-listitem-4 xans-product-listitem xans-product-4 opt">
-
-                    <span class="xans-record-">
-                      <b class="displaynone">
-                        <span style="font-size:12px;color:#ffffff;">상품간략설명</span> :
-                      </b>
-                      <span style="font-size:12px;color:#ffffff;">이곳에 설명이 노출됩니다.</span>
-                    </span>
-
-                    <span class="xans-record-">
-                      <b class="displaynone">
-                        <span style="font-size:12px;color:#ffffff;font-weight:bold;">판매가</span> :
-                      </b>
-                      <span style="font-size:12px;color:#ffffff;font-weight:bold;">원</span>
-                      <span id="span_product_tax_type_text" style=""> </span>
-                    </span>
-
-                  </span>
-                </p>
-              </a>
-            </span>
-          </li>
-
-          <li id="anchorBoxId_161" class="xans-record-">
-            <span class="thumb">
-              <img src="./sample3_files/img_main4.jpg" id="eListPrdImage161_5" alt="SAMPLE PRODUCT">&nbsp;
-              <a class="over" href="#none" name="anchorBoxName_161">
-                <p class="txtWrap">
-                  <span class="name">
-                    <span style="font-size:12px;color:#ffffff;">SAMPLE</span>
-                  </span>
-
-                  <span class="xans-element- xans-product xans-product-listitem-4 xans-product-listitem xans-product-4 opt">
-
-                    <span class="xans-record-">
-                      <b class="displaynone">
-                        <span style="font-size:12px;color:#ffffff;">상품간략설명</span> :
-                      </b>
-                      <span style="font-size:12px;color:#ffffff;">이곳에 설명이 노출됩니다.</span>
-                    </span>
-
-                    <span class="xans-record-">
-                      <b class="displaynone">
-                        <span style="font-size:12px;color:#ffffff;font-weight:bold;">판매가</span> :
-                      </b>
-                      <span style="font-size:12px;color:#ffffff;font-weight:bold;">원</span>
-                      <span id="span_product_tax_type_text" style=""> </span>
-                    </span>
-
-                  </span>
-                </p>
-              </a>
-            </span>
-          </li>
-
-            <li id="anchorBoxId_162" class="xans-record-">
-              <span class="thumb">
-                <img src="./sample3_files/img_main5.jpg" id="eListPrdImage162_5" alt="SAMPLE PRODUCT">&nbsp;
-                <a class="over" href="#none" name="anchorBoxName_162">
-                  <p class="txtWrap">
-                    <span class="name">
-                      <span style="font-size:12px;color:#ffffff;">SAMPLE</span>
-                    </span>
-
-                    <span class="xans-element- xans-product xans-product-listitem-4 xans-product-listitem xans-product-4 opt">
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;">상품간략설명</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;">이곳에 설명이 노출됩니다.</span>
-                      </span>
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;font-weight:bold;">판매가</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;font-weight:bold;">원</span>
-                        <span id="span_product_tax_type_text" style=""> </span>
-                      </span>
-
-                    </span>
-                  </p>
-                </a>
-              </span>
-            </li>
-
-            <li id="anchorBoxId_163" class="xans-record-">
-              <span class="thumb">
-                <img src="./sample3_files/img_main6.jpg" id="eListPrdImage163_5" alt="SAMPLE PRODUCT">&nbsp;
-                <a class="over" href="#none" name="anchorBoxName_163">
-                  <p class="txtWrap">
-                    <span class="name">
-                      <span style="font-size:12px;color:#ffffff;">SAMPLE</span>
-                    </span>
-
-                    <span class="xans-element- xans-product xans-product-listitem-4 xans-product-listitem xans-product-4 opt">
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;">상품간략설명</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;">이곳에 설명이 노출됩니다.</span>
-                      </span>
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;font-weight:bold;">판매가</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;font-weight:bold;">원</span>
-                        <span id="span_product_tax_type_text" style=""> </span>
-                      </span>
-
-                    </span>
-                  </p>
-                </a>
-              </span>
-            </li>
-
-            <li id="anchorBoxId_164" class="xans-record-">
-              <span class="thumb">
-                <img src="./sample3_files/img_main7.jpg" id="eListPrdImage164_5" alt="SAMPLE PRODUCT">&nbsp;
-                <a class="over" href="#none" name="anchorBoxName_164">
-                  <p class="txtWrap">
-                    <span class="name">
-                      <span style="font-size:12px;color:#ffffff;">SAMPLE</span>
-                    </span>
-
-                    <span class="xans-element- xans-product xans-product-listitem-4 xans-product-listitem xans-product-4 opt">
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;">상품간략설명</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;">이곳에 설명이 노출됩니다.</span>
-                      </span>
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;font-weight:bold;">판매가</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;font-weight:bold;">원</span>
-                        <span id="span_product_tax_type_text" style=""> </span>
-                      </span>
-
-                    </span>
-                  </p>
-                </a>
-              </span>
-            </li>
-
-            <li id="anchorBoxId_165" class="xans-record-">
-              <span class="thumb">
-                <img src="./sample3_files/img_main8.jpg" id="eListPrdImage165_5" alt="SAMPLE PRODUCT">&nbsp;
-                <a class="over" href="#none" name="anchorBoxName_165">
-                  <p class="txtWrap">
-                    <span class="name">
-                      <span style="font-size:12px;color:#ffffff;">SAMPLE</span>
-                    </span>
-
-                    <span class="xans-element- xans-product xans-product-listitem-4 xans-product-listitem xans-product-4 opt">
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;">상품간략설명</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;">이곳에 설명이 노출됩니다.</span>
-                      </span>
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;font-weight:bold;">판매가</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;font-weight:bold;">원</span>
-                        <span id="span_product_tax_type_text" style=""> </span>
-                      </span>
-
-                    </span>
-                  </p>
-                </a>
-              </span>
-            </li>
-
-            <li id="anchorBoxId_166" class="xans-record-">
-              <span class="thumb">
-                <img src="./sample3_files/img_main9.jpg" id="eListPrdImage166_5" alt="SAMPLE PRODUCT">&nbsp;
-                <a class="over" href="#none" name="anchorBoxName_166">
-                  <p class="txtWrap">
-                    <span class="name">
-                      <span style="font-size:12px;color:#ffffff;">SAMPLE</span>
-                    </span>
-
-                    <span class="xans-element- xans-product xans-product-listitem-4 xans-product-listitem xans-product-4 opt">
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;">상품간략설명</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;">이곳에 설명이 노출됩니다.</span>
-                      </span>
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;font-weight:bold;">판매가</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;font-weight:bold;">원</span>
-                        <span id="span_product_tax_type_text" style=""> </span>
-                      </span>
-
-                    </span>
-                  </p>
-                </a>
-              </span>
-            </li>
-
-            <li id="anchorBoxId_167" class="xans-record-">
-              <span class="thumb">
-                <img src="./sample3_files/img_main10.jpg" id="eListPrdImage167_5" alt="SAMPLE PRODUCT">&nbsp;
-                <a class="over" href="#none" name="anchorBoxName_167">
-                  <p class="txtWrap">
-                    <span class="name">
-                      <span style="font-size:12px;color:#ffffff;">SAMPLE</span>
-                    </span>
-
-                    <span class="xans-element- xans-product xans-product-listitem-4 xans-product-listitem xans-product-4 opt">
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;">상품간략설명</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;">이곳에 설명이 노출됩니다.</span>
-                      </span>
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;font-weight:bold;">판매가</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;font-weight:bold;">원</span>
-                        <span id="span_product_tax_type_text" style=""> </span>
-                      </span>
-
-                    </span>
-                  </p>
-                </a>
-              </span>
-            </li>
-
-            <li id="anchorBoxId_168" class="xans-record-">
-              <span class="thumb">
-                <img src="./sample3_files/img_main11.jpg" id="eListPrdImage168_5" alt="SAMPLE PRODUCT">&nbsp;
-                <a class="over" href="#none" name="anchorBoxName_168">
-                  <p class="txtWrap">
-                    <span class="name">
-                      <span style="font-size:12px;color:#ffffff;">SAMPLE</span>
-                    </span>
-
-                    <span class="xans-element- xans-product xans-product-listitem-4 xans-product-listitem xans-product-4 opt">
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;">상품간략설명</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;">이곳에 설명이 노출됩니다.</span>
-                      </span>
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;font-weight:bold;">판매가</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;font-weight:bold;">원</span>
-                        <span id="span_product_tax_type_text" style=""> </span>
-                      </span>
-
-                    </span>
-                  </p>
-                </a>
-              </span>
-            </li>
-
-            <li id="anchorBoxId_169" class="xans-record-">
-              <span class="thumb">
-                <img src="./sample3_files/img_main12.jpg" id="eListPrdImage169_5" alt="SAMPLE PRODUCT">&nbsp;
-                <a class="over" href="#none" name="anchorBoxName_169">
-                  <p class="txtWrap">
-                    <span class="name">
-                      <span style="font-size:12px;color:#ffffff;">SAMPLE</span>
-                    </span>
-
-                    <span class="xans-element- xans-product xans-product-listitem-4 xans-product-listitem xans-product-4 opt">
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;">상품간략설명</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;">이곳에 설명이 노출됩니다.</span>
-                      </span>
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;font-weight:bold;">판매가</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;font-weight:bold;">원</span>
-                        <span id="span_product_tax_type_text" style=""> </span>
-                      </span>
-
-                    </span>
-                  </p>
-                </a>
-              </span>
-            </li>
-
-            <li id="anchorBoxId_170" class="xans-record-">
-              <span class="thumb">
-                <img src="./sample3_files/img_main13.jpg" id="eListPrdImage170_5" alt="SAMPLE PRODUCT">&nbsp;
-                <a class="over" href="#none" name="anchorBoxName_170">
-                  <p class="txtWrap">
-                    <span class="name">
-                      <span style="font-size:12px;color:#ffffff;">SAMPLE</span>
-                    </span>
-
-                    <span class="xans-element- xans-product xans-product-listitem-4 xans-product-listitem xans-product-4 opt">
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;">상품간략설명</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;">이곳에 설명이 노출됩니다.</span>
-                      </span>
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;font-weight:bold;">판매가</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;font-weight:bold;">원</span>
-                        <span id="span_product_tax_type_text" style=""> </span>
-                      </span>
-
-                    </span>
-                  </p>
-                </a>
-              </span>
-            </li>
-
-            <li id="anchorBoxId_171" class="xans-record-">
-              <span class="thumb">
-                <img src="./sample3_files/img_main14.jpg" id="eListPrdImage171_5" alt="SAMPLE PRODUCT">&nbsp;
-                <a class="over" href="#none" name="anchorBoxName_171">
-                  <p class="txtWrap">
-                    <span class="name">
-                      <span style="font-size:12px;color:#ffffff;">SAMPLE</span>
-                    </span>
-
-                    <span class="xans-element- xans-product xans-product-listitem-4 xans-product-listitem xans-product-4 opt">
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;">상품간략설명</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;">이곳에 설명이 노출됩니다.</span>
-                      </span>
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;font-weight:bold;">판매가</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;font-weight:bold;">원</span>
-                        <span id="span_product_tax_type_text" style=""> </span>
-                      </span>
-
-                    </span>
-                  </p>
-                </a>
-              </span>
-            </li>
-
-            <li id="anchorBoxId_172" class="xans-record-">
-              <span class="thumb">
-                <img src="./sample3_files/img_main15.jpg" id="eListPrdImage172_5" alt="SAMPLE PRODUCT">&nbsp;
-                <a class="over" href="#none" name="anchorBoxName_172">
-                  <p class="txtWrap">
-                    <span class="name">
-                      <span style="font-size:12px;color:#ffffff;">SAMPLE</span>
-                    </span>
-
-                    <span class="xans-element- xans-product xans-product-listitem-4 xans-product-listitem xans-product-4 opt">
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;">상품간략설명</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;">이곳에 설명이 노출됩니다.</span>
-                      </span>
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;font-weight:bold;">판매가</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;font-weight:bold;">원</span>
-                        <span id="span_product_tax_type_text" style=""> </span>
-                      </span>
-
-                    </span>
-                  </p>
-                </a>
-              </span>
-            </li>
-
-            <li id="anchorBoxId_173" class="xans-record-">
-              <span class="thumb">
-                <img src="./sample3_files/img_main16.jpg" id="eListPrdImage173_5" alt="SAMPLE PRODUCT">&nbsp;
-                <a class="over" href="#none" name="anchorBoxName_173">
-                  <p class="txtWrap">
-                    <span class="name">
-                      <span style="font-size:12px;color:#ffffff;">SAMPLE</span>
-                    </span>
-
-                    <span class="xans-element- xans-product xans-product-listitem-4 xans-product-listitem xans-product-4 opt">
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;">상품간략설명</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;">이곳에 설명이 노출됩니다.</span>
-                      </span>
-
-                      <span class="xans-record-">
-                        <b class="displaynone">
-                          <span style="font-size:12px;color:#ffffff;font-weight:bold;">판매가</span> :
-                        </b>
-                        <span style="font-size:12px;color:#ffffff;font-weight:bold;">원</span>
-                        <span id="span_product_tax_type_text" style=""> </span>
-                      </span>
-
-                    </span>
-                  </p>
-                </a>
-              </span>
-            </li>
+<!-- //상품상세정보 -->
+<!-- 결제, 배송 -->
+<div class="detail_section" id="detail1">
+        <ul class="detail_tab">
+<li class=""><a href="javascript:;">매물정보</a></li>
+            <li class="on"><a href="javascript:;">카테고리1</a></li>
+            <li class=""><a href="javascript:;">카테고리2</a></li>
+            <li class=""><a href="javascript:;">카테고리3</a></li>
+            <li class=""><a href="javascript:;">카테고리4</a></li>
         </ul>
-      </div><!--// viewPort END -->
-    </div><!--// slide_wrap END -->
-    <a class="btn_slide_next"></a>
-    <a class="btn_slide_prev"></a>
-  </div> <br><br><br>
-<!--// 메인 진열 4번 END -->
+<div class="cont">
+            <h3>카테고리1</h3>
+            설명~~~~ &nbsp; <br>
+      <br>
+      설명~~~ &nbsp;<br>
+      설명~~~ <br>        </div>
+        <div class="cont">
+            <h3>~~~</h3>
+            <ul class="delivery">
+                <li>-- : --</li>
+                <li>-- : --</li>
+                <li>-- : --</li>
+                <li>-- : --</li>
+                <li>-- : --<br></li>
+            </ul>
+</div>
+    </div>
+<!-- // 결제, 배송 END -->
+<!-- 교환, 반품 -->
+<div class="detail_section" id="detail2">
+        <ul class="detail_tab">
+<li class=""><a href="javascript:;">매물정보</a></li>
+            <li class=""><a href="javascript:;">카테고리1</a></li>
+            <li class="on"><a href="javascript:;">카테고리2</a></li>
+            <li class=""><a href="javascript:;">카테고리3</a></li>
+            <li class=""><a href="javascript:;">카테고리4</a></li>
+        </ul>
+<div class="cont">
+            <h3>카테고리2</h3>
+            <b>~~~</b><br>
+
+<b>---</b><br>
+</div>
+        <div class="cont" style="display:none">
+<!-- display None -------------------------->
+            <h3>서비스문의</h3>
+                    </div>
+    </div>
+<!-- // 교환, 반품 END -->
+<!-- 상품 Q&A -->
+<div class="detail_section" id="detail4">
+        <ul class="detail_tab">
+<li class=""><a href="javascript:;">매물정보</a></li>
+            <li class=""><a href="javascript:;">카테고리1</a></li>
+            <li class=""><a href="javascript:;">카테고리2</a></li>
+            <li class=""><a href="javascript:;">카테고리3</a></li>
+            <li class="on"><a href="javascript:;">문의</a></li>
+        </ul>
+<div class="board">
+            <h3 class="tit_common"><span>문&nbsp;의</span></h3>
+            <p class="nodata">게시물이 없습니다</p>            <p class="btn_detailWrap">
+                <a class="btn_detail_bbs black" href="#none">글작성</a>
+                <a class="btn_detail_bbs" href="#none">전체보기</a>
+            </p>
+                    </div>
+<!--// board END -->
+    </div>
+<!-- // 상품 Q&A END -->
+</div>
+<!--// detail_container (상세) END -->
 
 
-
-<!-- 인스타그램 연동 -->
-<!--<div style="background-color:#ffffff;" class="xans-element- xans-instagramwidget xans-instagramwidget-display-1 xans-instagramwidget-display xans-instagramwidget-1 instaWrap typeGrid"> -->
-<!--
-        module="instagramwidget_display_1" 는 위젯리스트중 적용하고자 하는 위젯의 코드로 변경하여 사용하시면 됩니다.
-    -->
-<!--<div class="inWrap">
-        <h2><a target="_blank" class="widget-title">INSTAGRAM</a></h2>
-        <strong class="idTag ">
-            <a target="_blank" href="https://www.instagram.com/jeonyulin" class="widget-id-tag xans-record-">@jeonyulin</a>
-                    </strong>
-        <div class="thumb  fadeOut slide" style="">
-          <div>
-            <div>
-              <ul>
-                <li style="">
-                  <a href="https://www.instagram.com/p/BPG3rruBN1u/" target="_blank">
-                    <img src="./sample3_files/15875885_1791391917776435_7651021425033084928_n.jpg" width="114" height="114">
-                    <span class="likeLayer">
-                      <span class="likeCount">
-                        <span class="icoHeart">좋아요수</span>0</span>
-                        <span class="likeBg"></span>
-                      </span>
-                    </a>
-                  </li>
-                  <li style="margin:0px 0px 1px 1px;">
-                    <a href="https://www.instagram.com/p/BPG3pCABFnJ/" target="_blank">
-                      <img src="./sample3_files/15253273_1066410056836404_6398404564025868288_n.jpg" width="114" height="114"><span class="likeLayer"><span class="likeCount"><span class="icoHeart">좋아요수</span>0</span><span class="likeBg"></span></span></a></li><li style="margin:0px 0px 1px 1px;"><a href="https://www.instagram.com/p/BPG3nQxBpWl/" target="_blank"><img src="./sample3_files/15802691_1051581964971545_885117546238312448_n.jpg" width="114" height="114"><span class="likeLayer"><span class="likeCount"><span class="icoHeart">좋아요수</span>0</span><span class="likeBg"></span></span></a></li><li style="margin:0px 0px 1px 1px;"><a href="https://www.instagram.com/p/BPG3lhjh-Wq/" target="_blank"><img src="./sample3_files/15876742_1845584979020938_4635005861188599808_n.jpg" width="114" height="114"><span class="likeLayer"><span class="likeCount"><span class="icoHeart">좋아요수</span>0</span><span class="likeBg"></span></span></a></li><li style="margin:0px 0px 1px 1px;"><a href="https://www.instagram.com/p/BPG3iG3h5th/" target="_blank"><img src="./sample3_files/15803351_1354398767966408_4529523727846604800_n.jpg" width="114" height="114"><span class="likeLayer"><span class="likeCount"><span class="icoHeart">좋아요수</span>0</span><span class="likeBg"></span></span></a></li><li style="margin:0px 0px 1px 1px;"><a href="https://www.instagram.com/p/BPG3fySBqsP/" target="_blank"><img src="./sample3_files/15876372_1607469882603412_4779877225501556736_n.jpg" width="114" height="114"><span class="likeLayer"><span class="likeCount"><span class="icoHeart">좋아요수</span>0</span><span class="likeBg"></span></span></a></li><li style="margin:0px 0px 1px 1px;"><a href="https://www.instagram.com/p/BPG3ehRh3z8/" target="_blank"><img src="./sample3_files/15876877_359971587692533_3413392041218932736_n.jpg" width="114" height="114"><span class="likeLayer"><span class="likeCount"><span class="icoHeart">좋아요수</span>0</span><span class="likeBg"></span></span></a></li><li style="margin:0px 0px 1px 1px;"><a href="https://www.instagram.com/p/BPG3cimh-Nv/" target="_blank"><img src="./sample3_files/15876988_1542543225760177_6034253150494392320_n.jpg" width="114" height="114"><span class="likeLayer"><span class="likeCount"><span class="icoHeart">좋아요수</span>0</span><span class="likeBg"></span></span></a></li><li style="margin:0px 0px 1px 1px;"><a href="https://www.instagram.com/p/BPG3ajihfAX/" target="_blank"><img src="./sample3_files/15877603_696792327162390_8910650958317355008_n.jpg" width="114" height="114"><span class="likeLayer"><span class="likeCount"><span class="icoHeart">좋아요수</span>0</span><span class="likeBg"></span></span></a></li><li style="margin:0px 0px 1px 1px;"><a href="https://www.instagram.com/p/BOURHyaBges/" target="_blank"><img src="./sample3_files/15624282_1256090384475847_1800099584928645120_n.jpg" width="114" height="114"><span class="likeLayer"><span class="likeCount"><span class="icoHeart">좋아요수</span>0</span><span class="likeBg"></span></span></a></li></ul><ul><li style=""><a href="https://www.instagram.com/p/BOURF3AhKX9/" target="_blank"><img src="./sample3_files/15624867_719982734829006_655282829638238208_n.jpg" width="114" height="114"><span class="likeLayer"><span class="likeCount"><span class="icoHeart">좋아요수</span>0</span><span class="likeBg"></span></span></a></li><li style="margin:0px 0px 1px 1px;"><a href="https://www.instagram.com/p/BOURDbJh6EL/" target="_blank"><img src="./sample3_files/15534919_1316949591694457_1717621721625788416_n.jpg" width="114" height="114"><span class="likeLayer"><span class="likeCount"><span class="icoHeart">좋아요수</span>0</span><span class="likeBg"></span></span></a></li><li style="margin:0px 0px 1px 1px;"><a href="https://www.instagram.com/p/BOURBjmh24-/" target="_blank"><img src="./sample3_files/15623838_186765825124680_6458265009288904704_n.jpg" width="114" height="114"><span class="likeLayer"><span class="likeCount"><span class="icoHeart">좋아요수</span>0</span><span class="likeBg"></span></span></a></li><li style="margin:0px 0px 1px 1px;"><a href="https://www.instagram.com/p/BOUQ_QqhrBN/" target="_blank"><img src="./sample3_files/15625503_382844195440764_3314572359930740736_n.jpg" width="114" height="114"><span class="likeLayer"><span class="likeCount"><span class="icoHeart">좋아요수</span>0</span><span class="likeBg"></span></span></a></li><li style="margin:0px 0px 1px 1px;"><a href="https://www.instagram.com/p/BOUQ9tjhb85/" target="_blank"><img src="./sample3_files/15534840_351065205269389_3968024051737165824_n.jpg" width="114" height="114"><span class="likeLayer"><span class="likeCount"><span class="icoHeart">좋아요수</span>0</span><span class="likeBg"></span></span></a></li><li style="margin:0px 0px 1px 1px;"><a href="https://www.instagram.com/p/BOUQ6whB8U7/" target="_blank"><img src="./sample3_files/15403415_1748089192179287_1974583992833277952_n.jpg" width="114" height="114"><span class="likeLayer"><span class="likeCount"><span class="icoHeart">좋아요수</span>0</span><span class="likeBg"></span></span></a></li><li style="margin:0px 0px 1px 1px;"><a href="https://www.instagram.com/p/BOUQ467B6Am/" target="_blank"><img src="./sample3_files/14540481_1309810615748219_7870776841231925248_n.jpg" width="114" height="114"><span class="likeLayer"><span class="likeCount"><span class="icoHeart">좋아요수</span>0</span><span class="likeBg"></span></span></a></li><li style="margin:0px 0px 1px 1px;"><a href="https://www.instagram.com/p/BORcG2hBwpx/" target="_blank"><img src="./sample3_files/15623695_1112540615510821_7504414468730781696_n.jpg" width="114" height="114"><span class="likeLayer"><span class="likeCount"><span class="icoHeart">좋아요수</span>1</span><span class="likeBg"></span></span></a></li><li style="margin:0px 0px 1px 1px;"><a href="https://www.instagram.com/p/BORcDoXBfIX/" target="_blank"><img src="./sample3_files/15538757_304403183287789_275299122976653312_n.jpg" width="114" height="114"><span class="likeLayer"><span class="likeCount"><span class="icoHeart">좋아요수</span>0</span><span class="likeBg"></span></span></a></li><li style="margin:0px 0px 1px 1px;"><a href="https://www.instagram.com/p/BORb-8EhGv_/" target="_blank"><img src="./sample3_files/15538628_115102672320312_6655075928508465152_n.jpg" width="114" height="114"><span class="likeLayer"><span class="likeCount"><span class="icoHeart">좋아요수</span>0</span><span class="likeBg"></span></span></a></li></ul></div></div></div>
-    </div> -->
-<!--</div> -->
+    </div>
 </div>
 
 
 
 <div id="JD-Right" class="xans-element- xans-layout xans-layout-footer ">
   <div class="inwrap">
-        <div class="panel" style="overflow: hidden; width: 0px;">
-            <div class="panelWrap">
-                <div class="event_bnn">
-                    <!-- 상단 배너
-                    <a href="/index.html"><img src="/jeonyul/images/sample/cate_bnn02.jpg" /></a>-->
-                </div>
-                <p class="tit_right">COMMUNITY</p>
+  <div class="panel" style="overflow: hidden; width: 0px;">
+      <div class="panelWrap">
+          <div class="event_bnn">
+              <!-- 상단 배너
+              <a href="/index.html"><img src="/jeonyul/images/sample/cate_bnn02.jpg" /></a>-->
+          </div>
+          <p class="tit_right">COMMUNITY</p>
 <ul class="xans-element- xans-layout xans-layout-boardinfo btn_right_bbs">
-  <li class="xans-record-"><a href="#none">NOTICE</a></li>
+<li class="xans-record-"><a href="#none">NOTICE</a></li>
 <li class="xans-record-"><a href="#none">EVENT</a></li>
 <li class="xans-record-"><a href="#none">FAQ</a></li>
 <li class="xans-record-"><a href="#none">Q&amp;A</a></li>
 </ul>
 <p class="tit_right">COMMUNITY</p>
 <div class="section">
-  <p class="phone">1588-0000</p>
-  <p class="runtime">오전 09:00 - 오후 06:00<br>점심시간 오후 12:00 - 01:00<br>토,일 휴일</p>
+<p class="phone">1588-0000</p>
+<p class="runtime">오전 09:00 - 오후 06:00<br>점심시간 오후 12:00 - 01:00<br>토,일 휴일</p>
 </div>
 
 <p class="tit_right">BANK INFO</p>
 <div class="section">
-  <p class="bank">
-    국민 000-000-00000<br>
-    우리 000-000-00000<br>
-    예금주 : OOO                    </p>
-  </div>
+<p class="bank">
+국민 000-000-00000<br>
+우리 000-000-00000<br>
+예금주 : OOO                    </p>
+</div>
 
 <div class="panelBnn">
-  <div class="xans-element- xans-bannermanage2 xans-bannermanage2-display-6 xans-bannermanage2-display xans-bannermanage2-6 swiper-container swiper-container-horizontal">
-    <div class="swiper-slide xans-record-">
-      <a href="#none" alt="배너">
-        <img class="banner_image" width="140" height="140" title="배너" alt="배너" rel="13-6" src="./sample3_files/img_m3.jpg">
-      </a>
-    </div>
-  </div>
-  <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"></div>
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
+<div class="xans-element- xans-bannermanage2 xans-bannermanage2-display-6 xans-bannermanage2-display xans-bannermanage2-6 swiper-container swiper-container-horizontal">
+<div class="swiper-slide xans-record-">
+<a href="#none" alt="배너">
+  <img class="banner_image" width="140" height="140" title="배너" alt="배너" rel="13-6" src="./sample3_files/img_m3.jpg">
+</a>
+</div>
+</div>
+<div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"></div>
+<div class="swiper-button-next"></div>
+<div class="swiper-button-prev"></div>
 </div>
 <!--// swiper-container END -->
 </div>
 <!--// panelWrap END -->
 </div>
 <!--// panel END -->
-<a class="btn_right_open on" href="javascript:;"></a>
-<div class="panel_menu">
-<ul style="display:none">
-<!-- display none -->
-<li class="panel_btn close btn_right_open on" href="javascript:;">
-  <a href="file:///Users/munhohyeon/Desktop/sample3_2.htm"><!--<span>퀵메뉴</span>--></a></li>
-<li class="panel_btn truck">
-  <a href="#list.html"><!--<span>주문조회</span>--></a></li>
-  <li class="panel_btn today"><a href="#"><span>오늘 본 상품</span></a></li>
-  <li class="panel_btn cart"><a href="#basket.html"><!--<span>장바구니</span>--></a></li>
-                <li class="panel_btn naver"><a href="#n"><!--<span>네이버 톡톡</span>--></a></li>
-                <li class="panel_btn plus"><a href="#n"><!--<span>카카오플러스친구</span>--></a></li>
+
+
+        <a class="btn_right_open" href="javascript:;"></a>
+        <div class="panel_menu">
+          <ul style="display:none">
+            <!-- display none -->
+            <li class="panel_btn close btn_right_open" href="javascript:;">
+              <a href="#n"><!--<span>퀵메뉴</span>--></a>
+              </li>
+                <!--<li class="panel_btn today"><a href="#"><span>오늘 본 상품</span></a></li>-->
+                <li class="panel_btn cart">
+                  <a href="#basket.html"><!--<span>장바구니</span>--></a>
+                </li>
+                <li class="panel_btn naver">
+                  <a href="#n">
+                  <!--<span>네이버 톡톡</span>--></a>
+                </li>
+                <li class="panel_btn plus">
+                  <a href="#n">
+                  <!--<span>카카오플러스친구</span>--></a>
+                </li>
             </ul>
-<ul>
-<li><a class="btn_right_open">
-  <img src="./sample3_files/btn_close_on.jpg" style="opacity: 1;">
-  <img class="on" src="./sample3_files/btn_close.png" style="opacity: 0;">
-  <span>퀵메뉴</span></a></li>
-                <li><a href="#basket.html">
-                  <img src="./sample3_files/btn_view.png"><span>관심상품</span></a></li>
-                <li><a href="#n"><img src="./sample3_files/btn_naver.png"><span>네이버 톡톡</span></a></li>
-                <li><a href="#n"><img src="./sample3_files/btn_plus.png"><span>카카오플러스친구</span></a></li>
+
+            <ul>
+              <li>
+                <a href="#n" class="btn_right_open">
+                  <img src="./sample_ex_files/btn_close_on.jpg">
+                  <img class="on" src="./sample_ex_files/btn_close.png">
+                  <span>퀵메뉴</span>
+                </a>
+              </li>
+              <li>
+                <a href="#basket.html">
+                  <img src="./btn_view.png">
+                  <span>오늘본상품</span>
+                </a>
+              </li>
+              <li>
+                <a href="#n">
+                  <img src="./sample_ex_files/btn_naver.png">
+                  <span>네이버 톡톡</span>
+                </a>
+              </li>
+              <li>
+                <a href="#n">
+                  <img src="./sample_ex_files/btn_plus.png">
+                  <span>카카오플러스친구</span>
+                </a>
+              </li>
             </ul>
-<div class="scroll_btn">
-                <a class="btnTop" href="#top">top</a>
-                <a class="btnDw" href="#JD-Footer">bottom</a>
+
+            <div class="scroll_btn">
+                <a class="btnTop" href="#none">top</a>
+                <a class="btnDw" href="#none">bottom</a>
             </div>
         </div>
     </div>
@@ -1992,7 +736,6 @@ var EC_COMMON_UTIL = {convertSslForString : function(sString)
 <!--// JD-Right END -->
 
 
-<!-- #JD-Footer -->
 <div id="JD-Footer" class="xans-element- xans-layout xans-layout-footer">
 
 <div class="footWrap">
@@ -2044,31 +787,73 @@ var EC_COMMON_UTIL = {convertSslForString : function(sString)
     </div>
 <!--// footWrap END -->
 </div>
-<!--// Footer END -->
 
+<!--// #JD-Footer END -->
+<!-- 참고: 결제를 위한 필수 영역 -->
+<div id="progressPaybar" style="display:none;">
+    <div id="progressPaybarBackground" class="layerProgress"></div>
+    <div id="progressPaybarView">
+        <div class="box">
+            <p class="graph">
+                <span><img src="./sample_ex_files/txt_progress.gif" alt="현재 결제가 진행중입니다."></span>
+                <span><img src="./sample_ex_files/img_loading.gif" alt=""></span>
+            </p>
+            <p class="txt">
+                본 결제 창은 결제완료 후 자동으로 닫히며,결제 진행 중에 본 결제 창을 닫으시면<br>
+                주문이 되지 않으니 결제 완료 될 때 까지 닫지 마시기 바랍니다.
+            </p>
+        </div>
+    </div>
+</div>
+<!-- //참고 -->
+<div id="multi_option" style="display:none;"></div>
+<form id="frm_image_zoom" style="display:none;"></form>
+<script type="text/javascript" src="./sample_ex_files/saved_resource" charset="utf-8"></script>
 
-<script type="text/javascript" src="./sample3_files/saved_resource" charset="utf-8"></script>
-<script type="text/javascript" src="./sample3_files/optimizer(1).php"></script>
+<script type="text/javascript" src="./sample_ex_files/optimizer(1).php"></script>
 <script type="text/javascript">
 var mobileWeb = false;
-if (typeof Cafe24_SDK_Config_Url == 'function') { Cafe24_SDK_Config_Url('http://bannermanage2.app-runtime.cafe24.com:80/'); }
 var bUseElastic = false;
 var sSearchBannerUseFlag = 'F';
+if (typeof Cafe24_SDK_Config_Url == 'function') { Cafe24_SDK_Config_Url('#'); }
+EC_SHOP_FRONT_NEW_LIKE_COMMON.init({"bIsUseLikeProduct":false,"bIsUseLikeCategory":false});
+EC_SHOP_FRONT_REVIEW_TALK_REVIEW_COUNT.bIsReviewTalk = 'F';
+var bIsDisplaySoldoutOption =true;
+var aSoldoutDisplay = {"160":"\ud488\uc808"};
+var aReserveStockMessage = {"show_stock_message":"F","Q":"[\uc7ac\uace0 : [:\uc218\ub7c9:]\uac1c][\ub2f9\uc77c\ubc1c\uc1a1]","R":"[\uc7ac\uace0 : [:\uc218\ub7c9:]\uac1c][\uc608\uc57d\uc8fc\ubb38]","N":"","stock_message_replace_name":"[:\uc218\ub7c9:]"};
 var SHOP_CURRENCY_INFO = {"1":{"aShopCurrencyInfo":{"currency_code":"KRW","currency_no":"410","currency_symbol":"\uffe6","currency_name":"South Korean won","currency_desc":"\uffe6 \uc6d0 (\ud55c\uad6d)","decimal_place":0,"round_method_type":"F"},"aShopSubCurrencyInfo":null,"aBaseCurrencyInfo":{"currency_code":"KRW","currency_no":"410","currency_symbol":"\uffe6","currency_name":"South Korean won","currency_desc":"\uffe6 \uc6d0 (\ud55c\uad6d)","decimal_place":0,"round_method_type":"F"},"fExchangeRate":1,"fExchangeSubRate":null,"aFrontCurrencyFormat":{"head":"","tail":"\uc6d0"},"aFrontSubCurrencyFormat":{"head":"","tail":"\uc6d0"}}};
+var mileage_val = '0';var mileage_generate_calc = '0';
+var basket_type = 'A0000';var product_name = 'SAMPLE PRODUCT';var product_max_type = 'F';var has_option = 'T';var mileage_icon = '//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_product_point.gif';var mileage_icon_alt = '적립금 ';var price_unit_head = '';var price_unit_tail = '원';var option_push_button = 'F';var product_image_tiny = 'img_ex.jpg';var is_adult_product = 'F';var is_individual_buy = 'F';var is_soldout_icon = 'F';var link_product_detail = '/product/sample-product/160/display/2/';
+var product_min = '1';var order_limit_type = 'O';
+var product_max = '-1';
+var buy_unit_type = 'O';var buy_unit = '1';
+var product_price = '13000';var product_price_content = '';var is_selling_price = 'S';var product_price_mobile = '13000';var mobile_dc_price = '';var isMobileDcStatus = 'F';var product_price_ref = '';var currency_disp_type = 'P';
+var delvtype = 'A';
+$.data(document,'SameImage','F');
+var _iPrdtPriceOrg = 11818;
+var _iPrdtPriceTax = 1182;
+var qrcode_class = 'EC_Qrcode59fb0a736f844';
+var qrcode_url = '#';
+var sSocialUrl="/exec/front/Product/Social/";
+var sIsMileageDisplay = 'F';
 EC_SHOP_FRONT_NEW_OPTION_COMMON.initObject();
 EC_SHOP_FRONT_NEW_OPTION_BIND.initChooseBox();
 EC_SHOP_FRONT_NEW_OPTION_DATA.initData();
-EC_SHOP_FRONT_NEW_LIKE_COMMON.init({"bIsUseLikeProduct":false,"bIsUseLikeCategory":false});
-EC_SHOP_FRONT_REVIEW_TALK_REVIEW_COUNT.bIsReviewTalk = 'F';
-var basket_result = '/product/add_basket.html';
-var basket_option = '/product/basket_option.html';
-var iBoardNo = "4";
-var aLogData = {"log_server1":null,"log_server2":null,"mid":"sample"};
+var sMileageUnit = '[:가격:]원';
+var sIsDisplayNonmemberPrice = "F";
+var sNonmemberPrice = '-';
+var aOptionColorchip = [];
+var _iPrdtPriceOrg = 11818;
+var _iPrdtPriceTax = 1182;
+var option_type = 'T';var option_name_mapper = '색상#$%사이즈';var option_stock_data = '{\"P00000GD000A\":{\"stock_price\":\"0.00\",\"use_stock\":false,\"use_soldout\":\"F\",\"is_display\":\"T\",\"is_selling\":\"T\",\"option_price\":13000,\"option_name\":\"\\uc0c9\\uc0c1#$%\\uc0ac\\uc774\\uc988\",\"option_value\":\"\\uc624\\ub80c\\uc9c0-S\",\"stock_number\":0,\"option_value_orginal\":[\"\\uc624\\ub80c\\uc9c0\",\"S\"],\"use_stock_original\":\"T\",\"use_soldout_original\":\"F\",\"use_soldout_today_delivery\":null,\"is_auto_soldout\":\"F\",\"is_mandatory\":\"T\",\"option_id\":\"000A\",\"is_reserve_stat\":\"N\",\"item_image_file\":null,\"origin_option_added_price\":\"0.00\"},\"P00000GD000B\":{\"stock_price\":\"0.00\",\"use_stock\":false,\"use_soldout\":\"F\",\"is_display\":\"T\",\"is_selling\":\"T\",\"option_price\":13000,\"option_name\":\"\\uc0c9\\uc0c1#$%\\uc0ac\\uc774\\uc988\",\"option_value\":\"\\uc624\\ub80c\\uc9c0-M\",\"stock_number\":0,\"option_value_orginal\":[\"\\uc624\\ub80c\\uc9c0\",\"M\"],\"use_stock_original\":\"T\",\"use_soldout_original\":\"F\",\"use_soldout_today_delivery\":null,\"is_auto_soldout\":\"F\",\"is_mandatory\":\"T\",\"option_id\":\"000B\",\"is_reserve_stat\":\"N\",\"item_image_file\":null,\"origin_option_added_price\":\"0.00\"},\"P00000GD000C\":{\"stock_price\":\"0.00\",\"use_stock\":false,\"use_soldout\":\"F\",\"is_display\":\"T\",\"is_selling\":\"T\",\"option_price\":13000,\"option_name\":\"\\uc0c9\\uc0c1#$%\\uc0ac\\uc774\\uc988\",\"option_value\":\"\\uc624\\ub80c\\uc9c0-L\",\"stock_number\":0,\"option_value_orginal\":[\"\\uc624\\ub80c\\uc9c0\",\"L\"],\"use_stock_original\":\"T\",\"use_soldout_original\":\"F\",\"use_soldout_today_delivery\":null,\"is_auto_soldout\":\"F\",\"is_mandatory\":\"T\",\"option_id\":\"000C\",\"is_reserve_stat\":\"N\",\"item_image_file\":null,\"origin_option_added_price\":\"0.00\"},\"P00000GD000D\":{\"stock_price\":\"0.00\",\"use_stock\":false,\"use_soldout\":\"F\",\"is_display\":\"T\",\"is_selling\":\"T\",\"option_price\":13000,\"option_name\":\"\\uc0c9\\uc0c1#$%\\uc0ac\\uc774\\uc988\",\"option_value\":\"\\uc610\\ub85c\\uc6b0-S\",\"stock_number\":0,\"option_value_orginal\":[\"\\uc610\\ub85c\\uc6b0\",\"S\"],\"use_stock_original\":\"T\",\"use_soldout_original\":\"F\",\"use_soldout_today_delivery\":null,\"is_auto_soldout\":\"F\",\"is_mandatory\":\"T\",\"option_id\":\"000D\",\"is_reserve_stat\":\"N\",\"item_image_file\":null,\"origin_option_added_price\":\"0.00\"},\"P00000GD000E\":{\"stock_price\":\"0.00\",\"use_stock\":false,\"use_soldout\":\"F\",\"is_display\":\"T\",\"is_selling\":\"T\",\"option_price\":13000,\"option_name\":\"\\uc0c9\\uc0c1#$%\\uc0ac\\uc774\\uc988\",\"option_value\":\"\\uc610\\ub85c\\uc6b0-M\",\"stock_number\":0,\"option_value_orginal\":[\"\\uc610\\ub85c\\uc6b0\",\"M\"],\"use_stock_original\":\"T\",\"use_soldout_original\":\"F\",\"use_soldout_today_delivery\":null,\"is_auto_soldout\":\"F\",\"is_mandatory\":\"T\",\"option_id\":\"000E\",\"is_reserve_stat\":\"N\",\"item_image_file\":null,\"origin_option_added_price\":\"0.00\"},\"P00000GD000F\":{\"stock_price\":\"0.00\",\"use_stock\":false,\"use_soldout\":\"F\",\"is_display\":\"T\",\"is_selling\":\"T\",\"option_price\":13000,\"option_name\":\"\\uc0c9\\uc0c1#$%\\uc0ac\\uc774\\uc988\",\"option_value\":\"\\uc610\\ub85c\\uc6b0-L\",\"stock_number\":0,\"option_value_orginal\":[\"\\uc610\\ub85c\\uc6b0\",\"L\"],\"use_stock_original\":\"T\",\"use_soldout_original\":\"F\",\"use_soldout_today_delivery\":null,\"is_auto_soldout\":\"F\",\"is_mandatory\":\"T\",\"option_id\":\"000F\",\"is_reserve_stat\":\"N\",\"item_image_file\":null,\"origin_option_added_price\":\"0.00\"},\"P00000GD000G\":{\"stock_price\":\"0.00\",\"use_stock\":false,\"use_soldout\":\"F\",\"is_display\":\"T\",\"is_selling\":\"T\",\"option_price\":13000,\"option_name\":\"\\uc0c9\\uc0c1#$%\\uc0ac\\uc774\\uc988\",\"option_value\":\"\\ud551\\ud06c-S\",\"stock_number\":0,\"option_value_orginal\":[\"\\ud551\\ud06c\",\"S\"],\"use_stock_original\":\"T\",\"use_soldout_original\":\"F\",\"use_soldout_today_delivery\":null,\"is_auto_soldout\":\"F\",\"is_mandatory\":\"T\",\"option_id\":\"000G\",\"is_reserve_stat\":\"N\",\"item_image_file\":null,\"origin_option_added_price\":\"0.00\"},\"P00000GD000H\":{\"stock_price\":\"0.00\",\"use_stock\":false,\"use_soldout\":\"F\",\"is_display\":\"T\",\"is_selling\":\"T\",\"option_price\":13000,\"option_name\":\"\\uc0c9\\uc0c1#$%\\uc0ac\\uc774\\uc988\",\"option_value\":\"\\ud551\\ud06c-M\",\"stock_number\":0,\"option_value_orginal\":[\"\\ud551\\ud06c\",\"M\"],\"use_stock_original\":\"T\",\"use_soldout_original\":\"F\",\"use_soldout_today_delivery\":null,\"is_auto_soldout\":\"F\",\"is_mandatory\":\"T\",\"option_id\":\"000H\",\"is_reserve_stat\":\"N\",\"item_image_file\":null,\"origin_option_added_price\":\"0.00\"},\"P00000GD000I\":{\"stock_price\":\"0.00\",\"use_stock\":false,\"use_soldout\":\"F\",\"is_display\":\"T\",\"is_selling\":\"T\",\"option_price\":13000,\"option_name\":\"\\uc0c9\\uc0c1#$%\\uc0ac\\uc774\\uc988\",\"option_value\":\"\\ud551\\ud06c-L\",\"stock_number\":0,\"option_value_orginal\":[\"\\ud551\\ud06c\",\"L\"],\"use_stock_original\":\"T\",\"use_soldout_original\":\"F\",\"use_soldout_today_delivery\":null,\"is_auto_soldout\":\"F\",\"is_mandatory\":\"T\",\"option_id\":\"000I\",\"is_reserve_stat\":\"N\",\"item_image_file\":null,\"origin_option_added_price\":\"0.00\"}}';var stock_manage = '';var option_value_mapper = '{\"\\uc624\\ub80c\\uc9c0#$%S\":\"P00000GD000A\",\"\\uc624\\ub80c\\uc9c0#$%M\":\"P00000GD000B\",\"\\uc624\\ub80c\\uc9c0#$%L\":\"P00000GD000C\",\"\\uc610\\ub85c\\uc6b0#$%S\":\"P00000GD000D\",\"\\uc610\\ub85c\\uc6b0#$%M\":\"P00000GD000E\",\"\\uc610\\ub85c\\uc6b0#$%L\":\"P00000GD000F\",\"\\ud551\\ud06c#$%S\":\"P00000GD000G\",\"\\ud551\\ud06c#$%M\":\"P00000GD000H\",\"\\ud551\\ud06c#$%L\":\"P00000GD000I\"}';var item_count = '9';var item_listing_type = 'S';var product_option_price_display = 'T';
+var add_option_name = '';
+var iProductNo = '160';var iCategoryNo = '1';var iDisplayGroup = '2';var option_msg = '필수 옵션을 선택해 주세요.';var sLoginURL = 'login.html';var bPrdOptLayer = '';var sOptionType = 'T';
+var aLogData = {"log_server1":null,"log_server2":null,"mid":"ecudemo73637"};
 </script>
-<iframe src="./sample3_files/saved_resource.html" id="log_realtime" style="display: none;"></iframe>
+<iframe src="./sample_ex_files/saved_resource.html" id="log_realtime" style="display: none;"></iframe>
 <div id="modalBackpanel"></div>
 <div id="modalContainer">
-    <iframe id="modalContent" scroll="0" scrolling="no" frameborder="0" src="./sample3_files/saved_resource(1).html"></iframe>
+    <iframe id="modalContent" scroll="0" scrolling="no" frameborder="0" src="./sample_ex_files/saved_resource(1).html"></iframe>
 </div>
 </body>
 </html>
